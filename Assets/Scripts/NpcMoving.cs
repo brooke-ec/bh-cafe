@@ -1,52 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NpcMoving : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public float speed = 5.0f;
     public Transform[] waypoints;
-    private Transform waypoint;
-    public int destWaypoints = 0;
+    private int destWaypoints = 0;
+    private NavMeshAgent agent;
+    private Animator animator;
     void Start()
     {
-        waypoint = waypoints[destWaypoints];
-        transform.LookAt(new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z));
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
+   
+    
     void Update()
     {
-
-        if(new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z)==transform.position &&destWaypoints<waypoints.Length)
-        {
-            switchPoint();
-        }
-        else if(new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z) == transform.position && destWaypoints==waypoints.Length)
-        {
-            transform.Translate(0, 0, 0);
-
-        }
-        else
+        if (!agent.pathPending && agent.remainingDistance < 0.5f)
         {
             moveToPoint();
         }
     }
 
     void moveToPoint()
-    {
-        transform.LookAt(new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z));
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
-    }
-    
-    void switchPoint()
-    {
-        destWaypoints += 1;
-        if (waypoints.Length > destWaypoints)
+    { 
+        if(waypoints.Length <= destWaypoints)
         {
-            waypoint = waypoints[destWaypoints];
+            animator.SetFloat("Speed", 0f);
+            return;
         }
+
+        agent.destination = waypoints[destWaypoints].position;
+        destWaypoints++;
+        animator.SetFloat("Speed", 1.1f);
     }
 }
