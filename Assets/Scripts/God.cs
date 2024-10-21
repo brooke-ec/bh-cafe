@@ -6,6 +6,9 @@ public class God : MonoBehaviour
 {
     public static God instance;
 
+    public LevelUIManager levelUIManager;
+    public LevelManager levelManager;
+
     void Awake()
     {
         if(instance != null)
