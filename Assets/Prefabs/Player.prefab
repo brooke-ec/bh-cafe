@@ -189,6 +189,7 @@ MonoBehaviour:
     cameraAnchor: {fileID: 6429615700732461956}
     camera: {fileID: 1683712391869971699}
     animator: {fileID: 2080598075392094524}
+  interactable: {fileID: 0}
 --- !u!114 &9055645147149345056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +242,7 @@ CharacterController:
   m_Height: 2.071575
   m_Radius: 0.66
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 1
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.15, z: 0}

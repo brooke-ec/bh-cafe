@@ -4,8 +4,8 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float gravity;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float gravity;
+    [SerializeField] public float moveSpeed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float physicsMultiplier;
@@ -154,6 +154,20 @@ public class PlayerController : MonoBehaviour
             Time.deltaTime * 10
         );
     }
+
+    #region Collision
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Collider other = collision.collider;
+
+        if (other.CompareTag("Customer"))
+        {
+            
+        }
+    }
+
+    #endregion
 
     #region Input
 
