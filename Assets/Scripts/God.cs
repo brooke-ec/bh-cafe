@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class God : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static God instance;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        if(instance != null)
+        {
+            instance = this;
+        }
     }
 }
