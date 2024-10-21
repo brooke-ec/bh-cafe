@@ -39,6 +39,7 @@ public class CustomerSpawner : MonoBehaviour
             }
             CustomerController NewCustomer = Instantiate(Customer,transform.position,transform.rotation).GetComponent<CustomerController>();
             NewCustomer.waypoints = table.GetComponent<WayPoint>().waypoints;
+            NewCustomer.Table = table;
             table.GetComponent<WayPoint>().empty = false;
             running = 0;
         }
