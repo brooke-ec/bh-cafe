@@ -45,7 +45,13 @@ public class PlayerController : MonoBehaviour
     /// <summary> The current velocity of the dash </summary>
     private Vector3 dashVelocity;
 
-    void Start()
+    /// <summary> The item the player is currently holding </summary>
+    private GameObject heldItem;
+
+    /// <summary> The current interactable </summary>
+    public Interactable interactable;
+
+    private void Start()
     {
         cc = GetComponent<CharacterController>();
         targetZoom = references.camera.position.z;
@@ -63,6 +69,16 @@ public class PlayerController : MonoBehaviour
 
         references.animator.SetBool("Grounded", cc.isGrounded);
         references.animator.SetFloat("Vertical", vertical);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.TryGetComponent(out interactable);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == interactable.gameObject) interactable = null;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
