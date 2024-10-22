@@ -1,16 +1,19 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float gravity;
     [SerializeField] public float moveSpeed;
+    [SerializeField] public int life;
     [SerializeField] private float jumpPower;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float physicsMultiplier;
     [SerializeField] private CameraSettings cameraSettings;
     [SerializeField] private DashSettings dashSettings;
+    [SerializeField] private float fallOverTime;
 
     [Space(20)]
 
@@ -48,6 +51,10 @@ public class PlayerController : MonoBehaviour
     /// <summary> The item the player is currently holding </summary>
     private GameObject heldItem;
 
+    /// <summary> Time since fallen over</summary>
+    private float fallOverSince = -1;
+
+
     /// <summary> The current interactable </summary>
     public Interactable interactable;
 
@@ -64,6 +71,7 @@ public class PlayerController : MonoBehaviour
         ApplyDash();
         ApplyJump();
         ApplyGravity();
+        ApplyFallOver();
         ApplyMovement();
         UpdateZoom();
 
@@ -74,6 +82,13 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.TryGetComponent(out interactable);
+
+        if (other.CompareTag("Spill"))
+        {
+            Debug.Log("spill");
+            FallOver();
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
@@ -89,6 +104,12 @@ public class PlayerController : MonoBehaviour
             hit.point,
             ForceMode.Force
         );
+        if (hit.collider.CompareTag("Customer") && fallOverSince<0)
+        {
+            Debug.Log("Hit WIth Customer");
+            life -= 1;
+            FallOver();
+        }
     }
 
     public void ApplyDash()
@@ -155,19 +176,36 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    #region Collision
-
-    public void OnCollisionEnter(Collision collision)
+    private void ApplyFallOver()
     {
-        Collider other = collision.collider;
-
-        if (other.CompareTag("Customer"))
+        if(fallOverSince < 0)
         {
-            
+            return;
+        }
+        else if(fallOverSince<fallOverTime)
+        {
+            velocity = Vector3.zero;
+            fallOverSince += Time.deltaTime;
+
+        }
+        else
+        {
+            GetUp();
         }
     }
 
-    #endregion
+    private void FallOver()
+    {
+        references.animator.SetInteger("FallOver", 1);
+        fallOverSince = 0;
+    }
+
+    private void GetUp()
+    {
+        references.animator.SetInteger("FallOver", 0);
+        fallOverSince = -1;
+    }
+
 
     #region Input
 

@@ -798,6 +798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8600692468712594243, guid: 07e972963aa8d4c42876814fa5e0e7d4, type: 3}
+      propertyPath: fallOverTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
