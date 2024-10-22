@@ -40,6 +40,11 @@ public class LevelUIManager : MonoBehaviour
         scoreUI.ModifyScore(valueToModify);
     }
 
+    public void LoseHeart()
+    {
+        heartsUI.LoseHeart();
+    }
+
     #region Testing
     void Start()
     {
@@ -55,7 +60,7 @@ public class LevelUIManager : MonoBehaviour
             yield return new WaitForSecondsRealtime(3);
             ordersUI.AddNewOrder(100, null, 3);
             scoreUI.ModifyScore(50);
-            heartsUI.LoseHeart();
+            LoseHeart();
         }
     }
     #endregion
