@@ -44,6 +44,11 @@ public class LevelUIManager : MonoBehaviour
         scoreUI.ModifyScore(valueToModify);
     }
 
+    public int GetScore()
+    {
+        return scoreUI.score;
+    }
+
     public void LoseHeart()
     {
         heartsUI.LoseHeart();
