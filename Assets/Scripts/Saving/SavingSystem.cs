@@ -26,7 +26,14 @@ public class SavingSystem : MonoBehaviour
     {
         print("loaded");
         string saveDataAsString = System.IO.File.ReadAllText(filePath);
-        saveData = JsonUtility.FromJson<SaveData>(saveDataAsString);
+        if(string.IsNullOrEmpty(saveDataAsString))
+        {
+            saveData = new SaveData();
+        }
+        else
+        {
+            saveData = JsonUtility.FromJson<SaveData>(saveDataAsString);
+        }
     }
     public void SaveToJson()
     {
@@ -46,4 +53,5 @@ public class SaveData
 {
     public List<int> levelNums = new List<int>();
     public List<int> highscoreLevel = new List<int>();
+    public int diamonds;
 }

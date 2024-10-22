@@ -19,6 +19,8 @@ public class EndOfLevelUI : MonoBehaviour
     void Start()
     {
        lvlSettings = God.instance.levelUIManager.lvlSettings; 
+       SetUpTitle();
+       SetUpContent();
     }
 
     private void SetUpContent()
@@ -26,29 +28,36 @@ public class EndOfLevelUI : MonoBehaviour
         //SCORES AREA
         int currentScore = God.instance.levelUIManager.GetScore();
         int highscoreIndex = SavingSystem.instance.saveData.levelNums.FindIndex(num => num == lvlSettings.levelNum);
-        if (highscoreIndex >= 0)
+        int previousHigh = 0;
+        if (highscoreIndex < 0)
         {
-            int previousHigh = SavingSystem.instance.saveData.highscoreLevel[highscoreIndex];
-            //NEW HIGHSCORE SET
-            if (currentScore > previousHigh)
-            {
-
-            }
-            else
-            {
-
-            }
+            SavingSystem.instance.saveData.levelNums.Add(lvlSettings.levelNum);
+            SavingSystem.instance.saveData.highscoreLevel.Add(currentScore);
+            highscoreIndex = SavingSystem.instance.saveData.highscoreLevel.Count - 1;
         }
         else
         {
-            SavingSystem.instance.saveData.levelNums.Add(lvlSettings.levelNum);
-            SavingSystem.instance.saveData.highscoreLevel.Add(God.instance.levelUIManager.GetScore());
+            previousHigh = SavingSystem.instance.saveData.highscoreLevel[highscoreIndex];
         }
+        //NEW HIGHSCORE SET
+        contentTransform.GetChild(0).gameObject.SetActive(currentScore > previousHigh);
+        contentTransform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Target: " + lvlSettings.scoreNeededForLevel + "\nYour score: " + currentScore;
+        
+        if(currentScore > previousHigh)
+        {
+            contentTransform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Best: " + currentScore.ToString();
+        }
+        else
+        {
+            contentTransform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Best: " + previousHigh.ToString();
+        }
+
+        //MISSING SHOP POINTS
     }
 
     private void SetUpTitle()
     {
-        levelNumText.text = lvlSettings.levelNum.ToString();
+        levelNumText.text = "LEVEL "+lvlSettings.levelNum.ToString();
         if (IsLevelComplete())
         {
             completedText.text = "COMPLETED";
