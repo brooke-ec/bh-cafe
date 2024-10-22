@@ -12,7 +12,6 @@ public class TimerUI : MonoBehaviour
     void Awake()
     {
         arrow = transform.GetChild(0);
-        //StartLevelCountdown();
     }
 
     public void StartLevelCountdown(int lengthOfLevelMins)
