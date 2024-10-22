@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 2
   numOfHearts: 4
-  lengthOfLevelMins: 2
-  scoreNeededForLevel: 40
+  lengthOfLevelMins: 1
+  scoreNeededForLevel: 70
   scoreReductionForHealth: 6

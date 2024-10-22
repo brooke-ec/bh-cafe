@@ -17,6 +17,8 @@ public class LevelUIManager : MonoBehaviour
 
     public TimerUI timerUI;
 
+    public GameObject endOfLevelUIprefab;
+
     public void StartLevel()
     {
         heartsUI.SetInitialHearts(lvlSettings.numOfHearts);
@@ -28,6 +30,8 @@ public class LevelUIManager : MonoBehaviour
     {
         ordersUI.EndLevel();
         print("End of level");
+        Instantiate(endOfLevelUIprefab, transform);
+        StopAllCoroutines();
     }
 
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
