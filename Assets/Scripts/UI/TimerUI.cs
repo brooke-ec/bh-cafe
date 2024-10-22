@@ -5,32 +5,25 @@ using UnityEngine;
 
 public class TimerUI : MonoBehaviour
 {
-    /// <summary>
-    /// In minutes
-    /// </summary>
-    public int maxLevelTime;
-
-    /// <summary>
-    /// In seconds
-    /// </summary>
-    public float currentLevelTime;
+    // In seconds
+    private float currentLevelTime;
     private Transform arrow;
 
-    void Start()
+    void Awake()
     {
         arrow = transform.GetChild(0);
         //StartLevelCountdown();
     }
 
-    public void StartLevelCountdown()
+    public void StartLevelCountdown(int lengthOfLevelMins)
     {
-        StartCoroutine(RotateClockStick());
+        StartCoroutine(RotateClockStick(lengthOfLevelMins));
     }
 
     //It goes from 45 degrees to -315
-    IEnumerator RotateClockStick()
+    IEnumerator RotateClockStick(int lengthOfLevelMins)
     {
-        int totalLevelSeconds = maxLevelTime*60;
+        int totalLevelSeconds = lengthOfLevelMins*60;
 
         print(-360f/totalLevelSeconds);
         float rotationToApply = -360f/totalLevelSeconds; //rotation between the max time in seconds
@@ -39,11 +32,10 @@ public class TimerUI : MonoBehaviour
         {
             currentLevelTime += 1;
             arrow.Rotate(new Vector3(0, 0, rotationToApply));
-
-            print("rotate");
             yield return new WaitForSecondsRealtime(1);
         }
-        print("stop");
+
+        God.instance.levelUIManager.EndLevel();
     }
 
 }
