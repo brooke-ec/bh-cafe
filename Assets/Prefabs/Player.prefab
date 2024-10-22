@@ -192,6 +192,7 @@ MonoBehaviour:
     cameraAnchor: {fileID: 6429615700732461956}
     camera: {fileID: 1683712391869971699}
     animator: {fileID: 2080598075392094524}
+  slipped: 0
   interactable: {fileID: 0}
 --- !u!114 &9055645147149345056
 MonoBehaviour:

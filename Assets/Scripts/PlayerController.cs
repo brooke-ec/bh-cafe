@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
 using Unity.VisualScripting;
+using System.Runtime.CompilerServices;
 
 public class PlayerController : MonoBehaviour
 {
@@ -54,6 +55,8 @@ public class PlayerController : MonoBehaviour
     /// <summary> Time since fallen over</summary>
     private float fallOverSince = -1;
 
+    /// <summary> check if slipped</summary>
+    private float slipped = 0;
 
     /// <summary> The current interactable </summary>
     public Interactable interactable;
@@ -83,17 +86,33 @@ public class PlayerController : MonoBehaviour
     {
         other.TryGetComponent(out interactable);
 
-        if (other.CompareTag("Spill"))
+        
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Spill")&& slipped > 0.1)
         {
-            Debug.Log("spill");
+            slipped = -1;
             FallOver();
         }
-        
+        else if (other.CompareTag("Spill") && slipped >=0 )
+        {
+            slipped += Time.deltaTime;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.CompareTag("Spill"))
+        {
+            slipped = 0;
+        }
+
         if (other.gameObject == interactable.gameObject) interactable = null;
+
+        
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
