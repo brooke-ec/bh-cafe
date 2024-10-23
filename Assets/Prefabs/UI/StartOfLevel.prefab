@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2448885634652358325}
   - component: {fileID: 2237881431762834814}
   - component: {fileID: 7895593454162320384}
+  - component: {fileID: 2681608463912349979}
+  - component: {fileID: 5012877337634876951}
   m_Layer: 5
   m_Name: HomeButton
   m_TagString: Untagged
@@ -119,7 +121,44 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2237881431762834814}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2681608463912349979}
+        m_TargetAssemblyTypeName: LoadSceneFunctionality, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainMenu
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2681608463912349979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003079951313006648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1810fb81ad3809f43b40c7d5c50c7145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5012877337634876951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003079951313006648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24787ec9f95991349a8c3ad7429afcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScale: 1.05
 --- !u!1 &2139521484698778841
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +171,7 @@ GameObject:
   - component: {fileID: 630700353058253012}
   - component: {fileID: 2425377432786124328}
   - component: {fileID: 5345713237705875140}
+  - component: {fileID: 4854569871791778859}
   m_Layer: 5
   m_Name: ShoppingButton
   m_TagString: Untagged
@@ -240,6 +280,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4854569871791778859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139521484698778841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24787ec9f95991349a8c3ad7429afcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScale: 1.05
 --- !u!1 &4620908639202293399
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +305,7 @@ GameObject:
   - component: {fileID: 4794776733420615105}
   - component: {fileID: 6342061902118387038}
   - component: {fileID: 3912114632353309253}
+  - component: {fileID: 2884912632075021863}
   m_Layer: 5
   m_Name: StartButton
   m_TagString: Untagged
@@ -361,6 +415,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2884912632075021863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4620908639202293399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24787ec9f95991349a8c3ad7429afcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScale: 1.05
 --- !u!1 &5819260303812319395
 GameObject:
   m_ObjectHideFlags: 0
