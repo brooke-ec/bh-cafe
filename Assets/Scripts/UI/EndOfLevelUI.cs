@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,7 +20,8 @@ public class EndOfLevelUI : MonoBehaviour
 
     void Start()
     {
-       lvlSettings = God.instance.levelUIManager.lvlSettings; 
+        transform.DOScale(transform.localScale * 1.1f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+        lvlSettings = God.instance.levelUIManager.lvlSettings; 
        SetUpTitle();
        SetUpContent();
     }

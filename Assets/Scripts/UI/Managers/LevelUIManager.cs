@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -64,6 +65,7 @@ public class LevelUIManager : MonoBehaviour
     {
         //UI WITH DESCRIPTION OF LEVEL, AND A BUTTON TO START
         startOfLevel = Instantiate(startOfLevelUIPrefab, transform);
+        startOfLevel.transform.DOScale(transform.localScale * 1.1f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
         startOfLevel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "LEVEL " + lvlSettings.levelNum;
         startOfLevel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = lvlSettings.levelDescription;
         startOfLevel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>StartLevel());
