@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4401508022125643146}
   - component: {fileID: 629185543483699502}
-  - component: {fileID: 489700175082929776}
   m_Layer: 0
   m_Name: Spill area
   m_TagString: Spill
@@ -138,15 +137,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 0.3, z: 3}
   m_Center: {x: 0, y: 0.15, z: 0}
---- !u!114 &489700175082929776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504228235081099832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df23d775b8d9b048bdd598e9869a98a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

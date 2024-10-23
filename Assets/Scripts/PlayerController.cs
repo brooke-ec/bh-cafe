@@ -1,8 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
-using Unity.VisualScripting;
-using System.Runtime.CompilerServices;
 
 public class PlayerController : MonoBehaviour
 {
@@ -29,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 movement;
 
     /// <summary> The change in position applied at the end of this frame </summary>
-    private Vector3 velocity;
+    private Vector3 delta;
 
     /// <summary> The current vertical velocity of the player </summary>
     private float vertical;
@@ -47,19 +45,19 @@ public class PlayerController : MonoBehaviour
     private float dash = -1;
 
     /// <summary> The current velocity of the dash </summary>
-    private Vector3 dashVelocity;
+    private Vector3 veclocity;
 
     /// <summary> The item the player is currently holding </summary>
     private GameObject heldItem;
 
-    /// <summary> Time since fallen over</summary>
-    private float fallOverSince = -1;
-
-    /// <summary> check if slipped</summary>
-    private float slipped = 0;
+    /// <summary> Time since fallen over </summary>
+    private float fallen = 0;
 
     /// <summary> The current interactable </summary>
-    public Interactable interactable;
+    private Interactable interactable;
+
+    /// <summary> Wether input is disabled </summary>
+    private bool disabled = false;
 
     private void Start()
     {
@@ -70,14 +68,19 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        delta = Vector3.zero;
+        disabled = false;
+
+        ApplyFallen();
         ApplyRotation();
-        ApplyDash();
         ApplyJump();
         ApplyGravity();
-        ApplyFallOver();
         ApplyMovement();
         UpdateZoom();
 
+        if (dash > 0) dash -= Time.deltaTime;
+
+        references.animator.SetFloat("Fallen", fallen);
         references.animator.SetBool("Grounded", cc.isGrounded);
         references.animator.SetFloat("Vertical", vertical);
     }
@@ -86,60 +89,40 @@ public class PlayerController : MonoBehaviour
     {
         other.TryGetComponent(out interactable);
 
-        
-        
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Spill")&& slipped > 0.1)
-        {
-            slipped = -1;
-            FallOver();
-        }
-        else if (other.CompareTag("Spill") && slipped >=0 )
-        {
-            slipped += Time.deltaTime;
-        }
+        if (other.CompareTag("Spill")) Fall(other.transform.position);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Spill"))
-        {
-            slipped = 0;
-        }
-
-        if (other.gameObject == interactable.gameObject) interactable = null;
-
-        
+        if (interactable != null && other.gameObject == interactable.gameObject) interactable = null;
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.rigidbody == null) return;
         hit.rigidbody.AddForceAtPosition(
-            velocity * physicsMultiplier,
+            delta * physicsMultiplier,
             hit.point,
             ForceMode.Force
         );
-        if (hit.collider.CompareTag("Customer") && fallOverSince<0)
+
+        if (hit.collider.CompareTag("Customer"))
         {
-            Debug.Log("Hit WIth Customer");
-            life -= 1;
-            FallOver();
+            Fall(hit.point);
+            life--;
         }
     }
 
-    public void ApplyDash()
+    public void ApplyFallen()
     {
-        velocity += dashVelocity;
-        dashVelocity = Vector3.Lerp(dashVelocity, Vector3.zero, Time.deltaTime * 10);
-        dash -= Time.deltaTime;
+        if (fallen <= 0) return;
+        fallen -= Time.deltaTime;
+        disabled = true;
     }
 
     public void ApplyJump()
     {
+        if (disabled) jump = -1;
         if (coyote < 0) jump -= Time.deltaTime;
         else if (jump >= 0)
         {
@@ -156,10 +139,12 @@ public class PlayerController : MonoBehaviour
         float y = references.cameraAnchor.eulerAngles.y + look.x;
         references.cameraAnchor.eulerAngles = new Vector3(x, y, 0);
 
-        velocity = Quaternion.Euler(0, y, 0) * new Vector3(movement.x, 0, movement.y);
+        if (disabled) return;
 
-        if (velocity == Vector3.zero) return;
-        Quaternion rotation = Quaternion.LookRotation(velocity, Vector3.up);
+        delta = Quaternion.Euler(0, y, 0) * new Vector3(movement.x, 0, movement.y);
+
+        if (delta == Vector3.zero) return;
+        Quaternion rotation = Quaternion.LookRotation(delta, Vector3.up);
         references.animator.transform.rotation = Quaternion.Lerp(
             references.animator.transform.rotation,
             rotation,
@@ -174,13 +159,16 @@ public class PlayerController : MonoBehaviour
 
         if (cc.isGrounded && vertical < 0) vertical = -1;
         else vertical -= gravity * Time.deltaTime;
-        velocity.y = vertical;
+        delta.y = vertical;
     }
 
     private void ApplyMovement()
     {
-        if (velocity == Vector3.zero) return;
-        cc.Move(velocity * Time.deltaTime);
+        delta += veclocity;
+        veclocity = Vector3.Lerp(veclocity, Vector3.zero, Time.deltaTime * 10);
+
+        if (delta == Vector3.zero) return;
+        cc.Move(delta * Time.deltaTime);
     }
 
     private void UpdateZoom()
@@ -195,36 +183,14 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    private void ApplyFallOver()
+    void Fall(Vector3 point)
     {
-        if(fallOverSince < 0)
-        {
-            return;
-        }
-        else if(fallOverSince<fallOverTime)
-        {
-            velocity = Vector3.zero;
-            fallOverSince += Time.deltaTime;
-
-        }
-        else
-        {
-            GetUp();
-        }
+        if (fallen > 0) return;
+        veclocity = (transform.position - point).normalized * 25;
+        references.animator.SetTrigger("Slip");
+        fallen = fallOverTime;
+        vertical = 20;
     }
-
-    private void FallOver()
-    {
-        references.animator.SetInteger("FallOver", 1);
-        fallOverSince = 0;
-    }
-
-    private void GetUp()
-    {
-        references.animator.SetInteger("FallOver", 0);
-        fallOverSince = -1;
-    }
-
 
     #region Input
 
@@ -246,7 +212,7 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputValue input)
     {
         movement = input.Get<Vector2>() * moveSpeed;
-        velocity = new Vector3(movement.x, 0, movement.y);
+        delta = new Vector3(movement.x, 0, movement.y);
         references.animator.SetFloat("Speed", movement.magnitude);
     }
 
@@ -257,8 +223,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash()
     {
-        if (dash > 0) return;
-        dashVelocity = velocity * dashSettings.dashPower;
+        if (dash > 0 || disabled || movement == Vector2.zero) return;
+        veclocity = delta * dashSettings.dashPower;
         dash = dashSettings.dashCooldown;
     }
 

@@ -2404,7 +2404,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spill area
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 489700175082929776, guid: 59a5f346850d26241b4d3fb4f576a343, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
