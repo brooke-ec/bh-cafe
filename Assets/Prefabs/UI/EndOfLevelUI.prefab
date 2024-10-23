@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 8762915895648980975}
   - component: {fileID: 2363970108762750308}
   m_Layer: 5
-  m_Name: ShopFlowers
+  m_Name: Diamonds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,8 +6,7 @@ using UnityEngine;
 public class LevelSettings : ScriptableObject
 {
     public int levelNum;
-
-
+    public string levelDescription;
     public int numOfHearts;
     public int lengthOfLevelMins;
     public int scoreNeededForLevel;

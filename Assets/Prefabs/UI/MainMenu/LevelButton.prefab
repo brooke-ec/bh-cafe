@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 1
+  m_text: LEVEL 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
   m_sharedMaterial: {fileID: -6981615831871449039, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5385290671525496947}
   - component: {fileID: 6314340735668599652}
   - component: {fileID: 1545147492665304760}
+  - component: {fileID: 2512249952223585149}
   m_Layer: 5
   m_Name: LevelButton
   m_TagString: Untagged
@@ -259,15 +260,28 @@ MonoBehaviour:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: LoadLevel
-        m_Mode: 3
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_ObjectArgument: {fileID: 11400000, guid: d18173a8199f08e4cbd8eac63e7f0e03, type: 2}
+          m_ObjectArgumentAssemblyTypeName: LevelSettings, Assembly-CSharp
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2512249952223585149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553583345041627827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a9d230ebd308e48bc35879f6f4384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: d18173a8199f08e4cbd8eac63e7f0e03, type: 2}
 --- !u!1 &4208175851111053351
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,7 +347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ebb15a3be2b8924ab7f2557c8ebcce7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28bfaeb95822e7b40ae9732ef85bab4b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

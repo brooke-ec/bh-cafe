@@ -29,7 +29,7 @@ public class SavingSystem : MonoBehaviour
         filePath = Application.persistentDataPath + filePathEnd;
         if(File.Exists(filePath))
         {
-            string saveDataAsString = System.IO.File.ReadAllText(filePath);
+            string saveDataAsString = File.ReadAllText(filePath);
             saveData = JsonUtility.FromJson<SaveData>(saveDataAsString);
         }
         else
@@ -43,7 +43,7 @@ public class SavingSystem : MonoBehaviour
         print("saved");
         string saveDataAsString = JsonUtility.ToJson(saveData);
 
-        System.IO.File.WriteAllText(filePath, saveDataAsString);
+        File.WriteAllText(filePath, saveDataAsString);
     }
 
     private void OnApplicationQuit()
