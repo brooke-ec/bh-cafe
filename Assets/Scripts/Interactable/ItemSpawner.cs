@@ -6,6 +6,10 @@ public class ItemSpawner : MonoBehaviour
 
     public void Interact()
     {
-        Debug.Log("I am the Blahaj of the abyss!");
+        PlayerController player = FindObjectOfType<PlayerController>();
+        if (player.IsHolding()) return;
+        
+        GameObject instance = Instantiate(item);
+        player.Pickup(instance);
     }
 }

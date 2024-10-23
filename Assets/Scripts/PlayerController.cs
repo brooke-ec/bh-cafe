@@ -2,6 +2,8 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
+using System.Drawing;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private float dash = -1;
 
     /// <summary> The current velocity of the dash </summary>
-    private Vector3 veclocity;
+    private Vector3 velocity;
 
     /// <summary> The item the player is currently holding </summary>
     private GameObject heldItem;
@@ -86,8 +88,9 @@ public class PlayerController : MonoBehaviour
         if (dash > 0) dash -= Time.deltaTime;
 
         references.animator.SetFloat("Fallen", fallen);
-        references.animator.SetBool("Grounded", cc.isGrounded);
         references.animator.SetFloat("Vertical", vertical);
+        references.animator.SetBool("Grounded", cc.isGrounded);
+        references.animator.SetBool("Holding", heldItem != null);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -121,10 +124,36 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Fall(Vector3 point)
+    public bool IsHolding()
+    {
+        return heldItem != null;
+    }
+
+    public void Pickup(GameObject gameObject)
+    {
+        if (heldItem != null) return;
+        heldItem = gameObject;
+        heldItem.transform.parent = references.itemAnchor;
+        heldItem.transform.localRotation = Quaternion.identity;
+        heldItem.transform.localPosition = Vector3.zero;
+        heldItem.transform.localScale = Vector3.one;
+    }
+
+    public void Throw()
+    {
+        if (heldItem == null) return;
+        heldItem.transform.parent = null;
+        Rigidbody rb = heldItem.AddComponent<Rigidbody>();
+        rb.AddForce(references.animator.transform.forward * 15 + delta + new Vector3(0, 5, 0), ForceMode.Impulse);
+        heldItem = null;   
+    }
+
+    private void Fall(Vector3 point)
     {
         if (fallen > 0) return;
-        veclocity = (transform.position - point).normalized * 25;
+
+        Util.RunAfter(0.1f, Throw);
+        velocity = (transform.position - point).normalized * 25;
         references.animator.SetTrigger("Slip");
         fallen = fallOverTime;
         vertical = 20;
@@ -198,8 +227,8 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        delta += veclocity;
-        veclocity = Vector3.Lerp(veclocity, Vector3.zero, Time.deltaTime * 10);
+        delta += velocity;
+        velocity = Vector3.Lerp(velocity, Vector3.zero, Time.deltaTime * 10);
 
         if (delta == Vector3.zero) return;
         cc.Move(delta * Time.deltaTime);
@@ -251,7 +280,7 @@ public class PlayerController : MonoBehaviour
     public void OnDash()
     {
         if (dash > 0 || disabled || movement == Vector2.zero) return;
-        veclocity = delta * dashSettings.dashPower;
+        velocity = delta * dashSettings.dashPower;
         dash = dashSettings.dashCooldown;
     }
 
@@ -259,6 +288,13 @@ public class PlayerController : MonoBehaviour
     {
         if (closestInteractable == null) return;
         closestInteractable.Interact();
+    }
+
+    public void OnThrow()
+    {
+        if (disabled || heldItem == null) return;
+        references.animator.SetTrigger("Throw");
+        Util.RunAfter(0.15f, Throw);
     }
 
     #endregion
@@ -271,6 +307,7 @@ public class PlayerController : MonoBehaviour
         public Transform cameraAnchor;
         public Transform camera;
         public Animator animator;
+        public Transform itemAnchor;
     }
 
     [Serializable]

@@ -92,6 +92,37 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388620116882749576}
   m_Enabled: 1
+--- !u!1 &1728174716773954630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5994999391003056483}
+  m_Layer: 0
+  m_Name: Item Anchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5994999391003056483
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728174716773954630}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.055361714, y: -0.65796065, z: 0.022452792, w: -0.75067884}
+  m_LocalPosition: {x: 0.2675355, y: -0.07634881, z: 0.080586314}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3950037481100356724}
+  m_LocalEulerAnglesHint: {x: 6.469, y: 82.596, z: 2.258}
 --- !u!1 &2193315150579558778
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +222,7 @@ MonoBehaviour:
     cameraAnchor: {fileID: 6429615700732461956}
     camera: {fileID: 1683712391869971699}
     animator: {fileID: 2080598075392094524}
-    input: {fileID: 9055645147149345056}
+    itemAnchor: {fileID: 5994999391003056483}
 --- !u!114 &9055645147149345056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,12 +357,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8891244130364874969, guid: b2c24fcbd0cf6b04eb17b5ae21684483, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5994999391003056483}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2c24fcbd0cf6b04eb17b5ae21684483, type: 3}
 --- !u!95 &2080598075392094524 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b2c24fcbd0cf6b04eb17b5ae21684483, type: 3}
+  m_PrefabInstance: {fileID: 5599471068228865197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3950037481100356724 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8891244130364874969, guid: b2c24fcbd0cf6b04eb17b5ae21684483, type: 3}
   m_PrefabInstance: {fileID: 5599471068228865197}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5350250216289643334 stripped

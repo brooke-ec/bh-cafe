@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -21,5 +23,21 @@ public static class Util
 
         if (dStart >= 0 || dEnd >= 0) return value;
         return dStart > dEnd ? start : end;
+    }
+
+    /// <summary>
+    /// Invokes the provided function after the specified delay in seconds.
+    /// </summary>
+    /// <param name="delay">The number of seconds to delay the function by.</param>
+    /// <param name="action">The funciton to run after the specified delay.</param>
+    public static void RunAfter(float delay, Action action)
+    {
+        IEnumerator ThrowDelay()
+        {
+            yield return new WaitForSeconds(delay);
+            action();
+        }
+
+        God.instance.StartCoroutine(ThrowDelay());
     }
 }
