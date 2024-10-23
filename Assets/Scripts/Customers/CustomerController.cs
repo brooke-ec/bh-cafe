@@ -3,48 +3,51 @@ using UnityEngine.AI;
 
 public class CustomerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TableController table;
+    public Transform exit;
 
-    public Transform[] waypoints;
-    private int destWaypoints = 0;
+    private System.Action state;
     private NavMeshAgent agent;
     private Animator animator;
-    public GameObject Table;
-    public int x;
-    void Start()
+
+    private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        SetState(Arriving);
     }
-
-    // Update is called once per frame
-   
     
-    void Update()
+    // A finite state machine
+    private void Update() { state(); }
+
+    private void Arriving()
     {
-        if (agent.enabled && !agent.pathPending && agent.remainingDistance < 0.5f)
+        agent.destination = table.transform.position;
+        if (PathingComplete())
         {
-            moveToPoint();
+            SetState(Sitting);
         }
-        
     }
 
-    void moveToPoint()
-    { 
-        if(waypoints.Length <= destWaypoints)
-        {
-            agent.ResetPath();
-            animator.SetFloat("Speed", 0f);
-            Table.GetComponent<tableController>().whenArrive(this);
-            GetComponent<CapsuleCollider>().enabled = false;
-            agent.enabled = false;
-            animator.SetInteger("Sit", 1);
-            x++;
-            return;
-        }
+    private void Sitting()
+    {
 
-        agent.destination = waypoints[destWaypoints].position;
-        destWaypoints++;
-        animator.SetFloat("Speed", 1.1f);
+    }
+
+    private void Leaving()
+    {
+        agent.destination = exit.position;
+        if (PathingComplete()) Destroy(gameObject);
+    }
+
+    private bool PathingComplete()
+    {
+        return !agent.pathPending && agent.remainingDistance < 0.5f;
+    }
+
+    private void SetState(System.Action state)
+    {
+        animator.SetTrigger(state.Method.Name);
+        this.state = state;
     }
 }

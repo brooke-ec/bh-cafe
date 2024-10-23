@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: CustomerSpawner
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,9 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f986e36644b3fb4db4cc72409db97ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTime: 10
-  running: 0
-  Customer: {fileID: 8615059549901197924, guid: 978c0d9495579d04fab4e005a36d3492, type: 3}
-  Tables: []
-  index: 0
-  tablesList: []
+  spawnDelay: 10
+  customers:
+  - {fileID: 8615059549901197924, guid: 978c0d9495579d04fab4e005a36d3492, type: 3}
