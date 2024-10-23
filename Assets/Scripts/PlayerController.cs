@@ -1,6 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,8 +54,11 @@ public class PlayerController : MonoBehaviour
     /// <summary> Time since fallen over </summary>
     private float fallen = 0;
 
-    /// <summary> The current interactable </summary>
-    private Interactable interactable;
+    /// <summary> A list of interactables in range </summary>
+    private List<Interactable> interactables = new List<Interactable>();
+
+    /// <summary> The nearest interactable in range </summary>
+    private Interactable closestInteractable;
 
     /// <summary> Wether input is disabled </summary>
     private bool disabled = false;
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         ApplyMovement();
         UpdateZoom();
+        UpdateInteractables();
 
         if (dash > 0) dash -= Time.deltaTime;
 
@@ -87,14 +92,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        other.TryGetComponent(out interactable);
-
         if (other.CompareTag("Spill")) Fall(other.transform.position);
+        if (other.TryGetComponent(out Interactable interactable)) interactables.Add(interactable);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (interactable != null && other.gameObject == interactable.gameObject) interactable = null;
+        if (other.TryGetComponent(out Interactable interactable))
+        {
+            interactables.Remove(interactable);
+            interactable.active = false;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -111,6 +119,32 @@ public class PlayerController : MonoBehaviour
             Fall(hit.point);
             life--;
         }
+    }
+
+    void Fall(Vector3 point)
+    {
+        if (fallen > 0) return;
+        veclocity = (transform.position - point).normalized * 25;
+        references.animator.SetTrigger("Slip");
+        fallen = fallOverTime;
+        vertical = 20;
+    }
+
+    #region Updates
+
+    private void UpdateInteractables()
+    {
+        float closest = float.PositiveInfinity;
+        closestInteractable = null;
+
+        foreach (Interactable interactable in interactables)
+        {
+            interactable.active = false;
+            Vector3 distance = transform.position - interactable.transform.position;
+            if (distance.sqrMagnitude < closest) closestInteractable = interactable;
+        }
+
+        if (closestInteractable != null) closestInteractable.active = true;
     }
 
     public void ApplyFallen()
@@ -183,14 +217,7 @@ public class PlayerController : MonoBehaviour
         );
     }
 
-    void Fall(Vector3 point)
-    {
-        if (fallen > 0) return;
-        veclocity = (transform.position - point).normalized * 25;
-        references.animator.SetTrigger("Slip");
-        fallen = fallOverTime;
-        vertical = 20;
-    }
+    #endregion
 
     #region Input
 
@@ -226,6 +253,12 @@ public class PlayerController : MonoBehaviour
         if (dash > 0 || disabled || movement == Vector2.zero) return;
         veclocity = delta * dashSettings.dashPower;
         dash = dashSettings.dashCooldown;
+    }
+
+    public void OnInteract()
+    {
+        if (closestInteractable == null) return;
+        closestInteractable.Interact();
     }
 
     #endregion

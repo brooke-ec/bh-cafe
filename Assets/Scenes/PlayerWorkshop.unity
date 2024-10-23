@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 26704692}
   - component: {fileID: 26704691}
   - component: {fileID: 26704690}
+  - component: {fileID: 26704693}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,6 +214,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26704688}
   m_CullTransparentMesh: 1
+--- !u!225 &26704693
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26704688}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &104650351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a48e229bf51af8f4d9b145cc736718e2, type: 3}
@@ -295,6 +308,9 @@ PrefabInstance:
       addedObject: {fileID: 224935996}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca5fcf80f48dbda429cbb75ff3e045f0, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 224936004}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca5fcf80f48dbda429cbb75ff3e045f0, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 224936001}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ca5fcf80f48dbda429cbb75ff3e045f0, type: 3}
       insertIndex: -1
@@ -366,6 +382,35 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &224936004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224935995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7589620e7fa7f00498f66dee00cef643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 0
+  marker: {fileID: 26704693}
+  callback:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 224935996}
+        m_TargetAssemblyTypeName: ItemSpawner, Assembly-CSharp
+        m_MethodName: Interact
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &309961198
 GameObject:
   m_ObjectHideFlags: 0

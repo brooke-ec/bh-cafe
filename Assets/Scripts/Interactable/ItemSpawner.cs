@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class ItemSpawner : Interactable
+public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject item;
 
-    override public void Interact(PlayerController player)
+    public void Interact()
     {
         Debug.Log("I am the Blahaj of the abyss!");
     }
