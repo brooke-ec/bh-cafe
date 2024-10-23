@@ -22,16 +22,4 @@ public static class Util
         if (dStart >= 0 || dEnd >= 0) return value;
         return dStart > dEnd ? start : end;
     }
-
-    public static Vector2 WorldToCanvasPosition(RectTransform canvas, Camera camera, Vector3 position)
-    {
-        Vector3 result = camera.WorldToScreenPoint(position);
-
-        if (result.z < 0) return Vector2.negativeInfinity;
-
-        result.x -= canvas.sizeDelta.x * canvas.pivot.x;
-        result.y -= canvas.sizeDelta.y * canvas.pivot.y;
-
-        return result;
-    }
 }
