@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class God : MonoBehaviour
@@ -8,11 +6,14 @@ public class God : MonoBehaviour
 
     public LevelUIManager levelUIManager;
 
-    void Awake()
+    private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
+        if (instance == null) instance = this;
+    }
+
+    // Added this so that reloading in play mode works
+    private void OnEnable()
+    {
+        if (instance == null) instance = this;
     }
 }

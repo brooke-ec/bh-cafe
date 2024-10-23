@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     {
         if (fallen > 0) return;
 
-        Util.RunAfter(0.1f, Throw);
+        Throw();
         velocity = (transform.position - point).normalized * 25;
         references.animator.SetTrigger("Slip");
         fallen = fallOverTime;
