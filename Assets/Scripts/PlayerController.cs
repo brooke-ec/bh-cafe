@@ -153,6 +153,15 @@ public class PlayerController : MonoBehaviour
         Throw();
     }
 
+    public void speedUp()
+    {
+        moveSpeed += 12;
+    }
+    public void speedDown()
+    {
+        moveSpeed -= 12;
+    }
+
     #region Updates
 
     private void UpdateInteractables()
