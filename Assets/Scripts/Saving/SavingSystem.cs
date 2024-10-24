@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class SavingSystem : MonoBehaviour
 {
@@ -25,21 +26,24 @@ public class SavingSystem : MonoBehaviour
     public void LoadFromJson()
     {
         print("loaded");
-        string saveDataAsString = System.IO.File.ReadAllText(filePath);
-        if(string.IsNullOrEmpty(saveDataAsString))
+        filePath = Application.persistentDataPath + filePathEnd;
+        if(File.Exists(filePath))
         {
-            saveData = new SaveData();
+            string saveDataAsString = File.ReadAllText(filePath);
+            saveData = JsonUtility.FromJson<SaveData>(saveDataAsString);
         }
         else
         {
-            saveData = JsonUtility.FromJson<SaveData>(saveDataAsString);
+            saveData = new SaveData();
         }
+
     }
     public void SaveToJson()
     {
+        print("saved");
         string saveDataAsString = JsonUtility.ToJson(saveData);
 
-        System.IO.File.WriteAllText(filePath, saveDataAsString);
+        File.WriteAllText(filePath, saveDataAsString);
     }
 
     private void OnApplicationQuit()

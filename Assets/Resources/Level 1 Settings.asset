@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffdcdd40894d74fa1afcde48da82b4, type: 3}
   m_Name: Level 1 Settings
   m_EditorClassIdentifier: 
-  levelNum: 2
+  levelNum: 1
+  levelDescription: dwdwdw
   numOfHearts: 4
   lengthOfLevelMins: 1
   scoreNeededForLevel: 70
