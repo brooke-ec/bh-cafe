@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviour
         references.animator.SetTrigger("Slip");
         fallen = fallOverTime;
         vertical = 20;
+        GetComponent<Clang>().ClangPlay();
         Throw();
     }
 
