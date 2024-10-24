@@ -2,20 +2,17 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.Drawing;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float gravity;
     [SerializeField] public float moveSpeed;
-    [SerializeField] public int life;
     [SerializeField] private float jumpPower;
     [SerializeField] private float coyoteTime;
+    [SerializeField] private float fallOverTime;
     [SerializeField] private float physicsMultiplier;
     [SerializeField] private CameraSettings cameraSettings;
     [SerializeField] private DashSettings dashSettings;
-    [SerializeField] private float fallOverTime;
 
     [Space(20)]
 
@@ -118,10 +115,7 @@ public class PlayerController : MonoBehaviour
         );
 
         if (hit.collider.CompareTag("Customer"))
-        {
-            Fall(hit.point);
-            life--;
-        }
+            hit.gameObject.GetComponent<CustomerController>().Collide(this);
     }
 
     public bool IsHolding()
@@ -136,7 +130,6 @@ public class PlayerController : MonoBehaviour
         heldItem.transform.parent = references.itemAnchor;
         heldItem.transform.localRotation = Quaternion.identity;
         heldItem.transform.localPosition = Vector3.zero;
-        heldItem.transform.localScale = Vector3.one;
     }
 
     public void Throw()
@@ -148,15 +141,16 @@ public class PlayerController : MonoBehaviour
         heldItem = null;   
     }
 
-    private void Fall(Vector3 point)
+    public void Fall(Vector3 point)
     {
         if (fallen > 0) return;
 
-        Throw();
+        delta = Vector3.zero;
         velocity = (transform.position - point).normalized * 25;
         references.animator.SetTrigger("Slip");
         fallen = fallOverTime;
         vertical = 20;
+        Throw();
     }
 
     #region Updates
@@ -176,14 +170,14 @@ public class PlayerController : MonoBehaviour
         if (closestInteractable != null) closestInteractable.active = true;
     }
 
-    public void ApplyFallen()
+    private void ApplyFallen()
     {
         if (fallen <= 0) return;
         fallen -= Time.deltaTime;
         disabled = true;
     }
 
-    public void ApplyJump()
+    private void ApplyJump()
     {
         if (disabled) jump = -1;
         if (coyote < 0) jump -= Time.deltaTime;

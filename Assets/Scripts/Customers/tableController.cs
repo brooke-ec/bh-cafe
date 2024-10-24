@@ -1,35 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class tableController : MonoBehaviour
+public class TableController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-    public bool arrived;
+    public CustomerController customer;
+    public Transform sitAnchor;
     public Transform chair;
-    private Vector3 offset;
-    private CustomerController customer;
 
+    private Vector3 chairPos;
 
     void Start()
     {
-        arrived = false;
-        offset = chair.position+ new Vector3(0, 0, 0.75f);
+        chairPos = chair.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (customer == null) return;
+        if (customer.IsSitting()) chair.position = new Vector3(
+            sitAnchor.position.x, 
+            chairPos.y,
+            sitAnchor.position.z
+        );
+        else chair.position = chairPos;
     }
 
-    public void whenArrive(CustomerController controller)
+    public bool IsEmpty()
     {
-        customer = controller;
-        chair.position = offset;
-        arrived = true;
-        controller.transform.position = chair.position+new Vector3(0,1f,0);
-        controller.transform.eulerAngles = new Vector3(0, 180, 0);
+        return customer == null;
     }
 }

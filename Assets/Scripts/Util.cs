@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -30,7 +29,7 @@ public static class Util
     /// </summary>
     /// <param name="delay">The number of seconds to delay the function by.</param>
     /// <param name="action">The funciton to run after the specified delay.</param>
-    public static void RunAfter(float delay, Action action)
+    public static void RunAfter(float delay, System.Action action)
     {
         IEnumerator ThrowDelay()
         {
@@ -39,5 +38,16 @@ public static class Util
         }
 
         God.instance.StartCoroutine(ThrowDelay());
+    }
+
+    /// <summary>
+    /// Picks a random item from the provided array
+    /// </summary>
+    /// <typeparam name="T">The type of the array</typeparam>
+    /// <param name="array">The array to get options from.</param>
+    /// <returns>A random item from the array</returns>
+    public static T PickRandom<T>(T[] array)
+    {
+        return array[Random.Range(0, array.Length - 1)];
     }
 }

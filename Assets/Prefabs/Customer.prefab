@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.428
+      value: -2.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.0000009536743
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.317324
+      value: -15.93
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -85,7 +85,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 3880245408910420130}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       insertIndex: -1
@@ -95,7 +95,7 @@ PrefabInstance:
       addedObject: {fileID: 175475177484609129}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1861387060287613622}
+      addedObject: {fileID: 3149848378179457134}
   m_SourcePrefab: {fileID: 100100000, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
 --- !u!1 &8615059549901197924 stripped
 GameObject:
@@ -114,12 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cc1b313d1740443842bc5f4cdf81fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Table: {fileID: 0}
-  x: 0
+  fallOverTime: 2
+  table: {fileID: 0}
+  exit: {fileID: 0}
 --- !u!195 &3049379840403561683
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -162,10 +159,10 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.21
-  m_Height: 0.71250284
+  m_Height: 0.56829405
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3512513, z: 0}
---- !u!54 &1861387060287613622
+  m_Center: {x: 0, y: 0.2791469, z: 0}
+--- !u!54 &3149848378179457134
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +184,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
