@@ -59,5 +59,5 @@ public class SaveData
     public List<int> highscoreLevel = new List<int>();
     public int diamonds;
 
-    public List<ShopItem> shopUpgradesBought = new List<ShopItem>();
+    public List<ShopItemInfo> shopUpgradesBought = new List<ShopItemInfo>();
 }

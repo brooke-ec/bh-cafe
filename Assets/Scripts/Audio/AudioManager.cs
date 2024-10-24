@@ -85,7 +85,11 @@ public class AudioManager : MonoBehaviour
     {
         UIhover,
         UIclick,
-        pickUp
+        pickUp,
+        levelComplete,
+        error,
+        levelFail,
+        bought
     }
 
     #endregion

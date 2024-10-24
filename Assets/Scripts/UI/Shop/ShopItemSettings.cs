@@ -22,8 +22,14 @@ public class ShopItem
 {
     public int cost;
     public Sprite icon;
+    public ShopItemInfo info;
+    public int modifier;
+}
+
+[Serializable]
+public class ShopItemInfo
+{
     public ShopItemType shopItemType;
     [Range(1, 3)]
     public int shopItemTypeNum = 1;
-    public int modifier;
 }

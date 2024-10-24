@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
 using Unity.VisualScripting;
+using DG.Tweening;
 
 public class ShopManager : MonoBehaviour
 {
@@ -30,11 +31,17 @@ public class ShopManager : MonoBehaviour
         {
             GameObject shopItem = Instantiate(shopItemPrefab, itemsContainer);
             ShopItem shopItemInfo = shopItemSettings.shopItems[i];
-            shopItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopItemInfo.shopItemType.ToString() + " "+shopItemInfo.shopItemTypeNum;
+            shopItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = shopItemInfo.info.shopItemType.ToString() + " "+shopItemInfo.info.shopItemTypeNum;
             shopItem.transform.GetChild(1).GetComponent<Image>().sprite = shopItemInfo.icon;
             shopItem.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = shopItemInfo.cost.ToString();
 
-            if(totalDiamonds >= shopItemInfo.cost) 
+            shopItem.GetComponent<Button>().onClick.AddListener(() => BuyUpgrade(shopItemInfo, shopItem.GetComponent<Image>()));
+            
+            if (HasUpgradeBeenBought(shopItemInfo.info.shopItemType, shopItemInfo.info.shopItemTypeNum) != -1)
+            {
+                shopItem.GetComponent<Image>().color = boughtColour;
+            }
+            else if(totalDiamonds >= shopItemInfo.cost) 
             {
                 shopItem.GetComponent<Image>().color = enoughDiamondsColour;
             }
@@ -46,22 +53,41 @@ public class ShopManager : MonoBehaviour
     }
 
 /// <returns>-1 if not bought, otherwise the index in the saved list</returns>
-    public int HasUpgradeBeenBought(ShopItem shopItemInfo)
+    public int HasUpgradeBeenBought(ShopItemType shopItemType, int shopItemNum)
     {
-        int index = SavingSystem.instance.saveData.shopUpgradesBought.FindIndex(item => (item.shopItemType == shopItemInfo.shopItemType) && (item.shopItemTypeNum == shopItemInfo.shopItemTypeNum));
+        int index = SavingSystem.instance.saveData.shopUpgradesBought.FindIndex(item => (item.shopItemType == shopItemType) && (item.shopItemTypeNum == shopItemNum));
         return index;
     }
 
-    public void BuyUpgrade(ShopItem shopItemInfo)
+    public bool PreviousUpgradesBought(ShopItemType shopItemType, int shopItemNum)
     {
-        if(SavingSystem.instance.saveData.diamonds >= shopItemInfo.cost)
+        if(shopItemNum == 1)
         {
-
-            SavingSystem.instance.saveData.diamonds -= shopItemInfo.cost;
+            return true;
         }
         else
         {
-            //Make X sound
+            return (HasUpgradeBeenBought(shopItemType, shopItemNum-1) != -1);
         }
+    }
+
+    public void BuyUpgrade(ShopItem shopItemInfo, Image itemImage)
+    {
+        if (SavingSystem.instance.saveData.diamonds >= shopItemInfo.cost && PreviousUpgradesBought(shopItemInfo.info.shopItemType, shopItemInfo.info.shopItemTypeNum))
+        {
+            //if not bought yet, buy
+            if (HasUpgradeBeenBought(shopItemInfo.info.shopItemType, shopItemInfo.info.shopItemTypeNum) == -1)
+            {
+                SavingSystem.instance.saveData.shopUpgradesBought.Add(shopItemInfo.info);
+                SavingSystem.instance.saveData.diamonds -= shopItemInfo.cost;
+                diamondsText.transform.DOScale(transform.localScale * 1.1f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+                diamondsText.text = SavingSystem.instance.saveData.diamonds.ToString();
+                itemImage.color = boughtColour;
+
+                AudioManager.instance.PlaySound(AudioManager.SoundEnum.bought);
+                return;
+            }
+        }
+        AudioManager.instance.PlaySound(AudioManager.SoundEnum.error);
     }
 }

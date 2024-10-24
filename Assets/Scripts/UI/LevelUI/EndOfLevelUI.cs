@@ -65,11 +65,13 @@ public class EndOfLevelUI : MonoBehaviour
         {
             completedText.text = "COMPLETED";
             completedText.color = successLevelColour;
+            AudioManager.instance.PlaySound(AudioManager.SoundEnum.levelComplete);
         }
         else
         {
             completedText.text = "FAILED";
             completedText.color = failedLevelColour;
+            AudioManager.instance.PlaySound(AudioManager.SoundEnum.levelFail);
         }
     }
 
