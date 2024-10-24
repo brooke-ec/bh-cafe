@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Level 1 Settings
   m_EditorClassIdentifier: 
   levelNum: 1
-  levelDescription: dwdwdw
+  levelDescription: hello
   numOfHearts: 4
   lengthOfLevelMins: 1
   scoreNeededForLevel: 70
   scoreReductionForHealth: 6
+  extraDiamondPercentage: 20

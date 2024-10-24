@@ -2,15 +2,13 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class LevelUIManager : MonoBehaviour
 {
     [Header("Level Settings")]
-    public LevelSettings lvlSettings; 
+    public LevelSettings lvlSettings;
 
 
     [Header("References")]
@@ -23,7 +21,10 @@ public class LevelUIManager : MonoBehaviour
     public GameObject startOfLevelUIPrefab;
     private GameObject startOfLevel;
 
-
+    void Awake()
+    {
+        lvlSettings = Instantiate(lvlSettings);
+    }
     public void StartLevel()
     {
         Destroy(startOfLevel);
@@ -66,22 +67,28 @@ public class LevelUIManager : MonoBehaviour
     {
         ShopItemSettings shopItemSettings = Resources.Load<ShopItemSettings>("ShopSettings");
         PlayerController playerController = FindAnyObjectByType<PlayerController>();
-        foreach(ShopItemInfo shopItem in SavingSystem.instance.saveData.shopUpgradesBought)
+        foreach(ShopItemInfo upgradeBought in SavingSystem.instance.saveData.shopUpgradesBought)
         {
-            //switch(shopItem.)
-            switch(shopItem.shopItemType)
+            ShopItem shopItemRef = shopItemSettings.shopItems.Find(item => (item.info.shopItemType == upgradeBought.shopItemType) && (item.info.shopItemTypeNum == upgradeBought.shopItemTypeNum));
+            if(shopItemRef != null)
             {
-                case ShopItemType.Time:
-                    //lvlSettings.lengthOfLevelMins += shopItemSettings.shopItems.Find(item => item.modifier)
-                    break;
-                case ShopItemType.Hearts:
-                    break;
-                case ShopItemType.Diamonds:
-                    break;
-                case ShopItemType.DashSpeed:
-                    break;
-                default:
-                    break;
+                switch(upgradeBought.shopItemType)
+                {
+                    case ShopItemType.Time:
+                        lvlSettings.lengthOfLevelMins += shopItemRef.modifier;
+                        break;
+                    case ShopItemType.Hearts:
+                        lvlSettings.numOfHearts += shopItemRef.modifier;
+                        break;
+                    case ShopItemType.Diamonds:
+                        lvlSettings.extraDiamondPercentage += shopItemRef.modifier;
+                        break;
+                    case ShopItemType.Speed:
+                        playerController.moveSpeed += shopItemRef.modifier;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

@@ -11,4 +11,9 @@ public class LevelSettings : ScriptableObject
     public int lengthOfLevelMins;
     public int scoreNeededForLevel;
     public int scoreReductionForHealth;
+    /// <summary>
+    /// For every 50 extra score, get this % of extra diamonds
+    /// </summary>
+    [Range(20, 50)]
+    public int extraDiamondPercentage = 5;
 }

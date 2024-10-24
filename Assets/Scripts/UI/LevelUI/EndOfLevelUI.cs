@@ -56,6 +56,8 @@ public class EndOfLevelUI : MonoBehaviour
         }
 
         //MISSING SHOP POINTS
+        int diamonds = SavingSystem.instance.saveData.diamonds += CalculateNewDiamonds(currentScore - lvlSettings.scoreNeededForLevel);
+        contentTransform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diamonds.ToString();
     }
 
     private void SetUpTitle()
@@ -78,5 +80,16 @@ public class EndOfLevelUI : MonoBehaviour
     private bool IsLevelComplete()
     {
         return God.instance.levelUIManager.GetScore() >= lvlSettings.scoreNeededForLevel;
+    }
+
+    private int CalculateNewDiamonds(int extraScore)
+    {
+        if(extraScore <= 0)
+        {
+            //ERROR HERE
+            return 0;
+        }
+        float percentage = lvlSettings.extraDiamondPercentage/100f;
+        return (int)(extraScore * percentage);
     }
 }

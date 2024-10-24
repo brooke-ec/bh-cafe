@@ -13,7 +13,7 @@ public enum ShopItemType
 {
     Time,
     Hearts,
-    DashSpeed,
+    Speed,
     Diamonds
 } 
 

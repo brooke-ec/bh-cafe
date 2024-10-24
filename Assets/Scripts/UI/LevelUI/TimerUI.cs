@@ -6,7 +6,7 @@ using UnityEngine;
 public class TimerUI : MonoBehaviour
 {
     // In seconds
-    private float currentLevelTime;
+    public float currentLevelTime;
     private Transform arrow;
 
     void Awake()
