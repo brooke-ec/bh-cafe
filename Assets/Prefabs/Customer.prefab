@@ -114,8 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57cc1b313d1740443842bc5f4cdf81fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  fallOverTime: 2
   table: {fileID: 0}
+  exit: {fileID: 0}
 --- !u!195 &3049379840403561683
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -158,9 +159,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.21
-  m_Height: 0.71250284
+  m_Height: 0.56829405
   m_Direction: 1
-  m_Center: {x: 0, y: 0.3512513, z: 0}
+  m_Center: {x: 0, y: 0.2791469, z: 0}
 --- !u!54 &3149848378179457134
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -3,23 +3,25 @@ using UnityEngine;
 public class TableController : MonoBehaviour
 {
     public CustomerController customer;
-    [SerializeField] private Transform chair;
+    public Transform sitAnchor;
+    public Transform chair;
 
-    private Vector3 offset;
-    private bool arrived = false;
-
+    private Vector3 chairPos;
 
     void Start()
     {
-        offset = chair.position+ new Vector3(0, 0, 0.75f);
+        chairPos = chair.position;
     }
 
-    public void Arrive()
+    void Update()
     {
-        arrived = true;
-        chair.position = offset;
-        customer.transform.position = chair.position + new Vector3(0,1f,0);
-        customer.transform.eulerAngles = new Vector3(0, 180, 0);
+        if (customer == null) return;
+        if (customer.IsSitting()) chair.position = new Vector3(
+            sitAnchor.position.x, 
+            chairPos.y,
+            sitAnchor.position.z
+        );
+        else chair.position = chairPos;
     }
 
     public bool IsEmpty()

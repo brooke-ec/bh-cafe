@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] public float gravity;
     [SerializeField] public float moveSpeed;
-    [SerializeField] public int life;
     [SerializeField] private float jumpPower;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float fallOverTime;
@@ -116,10 +115,7 @@ public class PlayerController : MonoBehaviour
         );
 
         if (hit.collider.CompareTag("Customer"))
-        {
-            Fall(hit.point);
-            life--;
-        }
+            hit.gameObject.GetComponent<CustomerController>().Collide(this);
     }
 
     public bool IsHolding()
@@ -145,7 +141,7 @@ public class PlayerController : MonoBehaviour
         heldItem = null;   
     }
 
-    private void Fall(Vector3 point)
+    public void Fall(Vector3 point)
     {
         if (fallen > 0) return;
 
@@ -174,14 +170,14 @@ public class PlayerController : MonoBehaviour
         if (closestInteractable != null) closestInteractable.active = true;
     }
 
-    public void ApplyFallen()
+    private void ApplyFallen()
     {
         if (fallen <= 0) return;
         fallen -= Time.deltaTime;
         disabled = true;
     }
 
-    public void ApplyJump()
+    private void ApplyJump()
     {
         if (disabled) jump = -1;
         if (coyote < 0) jump -= Time.deltaTime;
