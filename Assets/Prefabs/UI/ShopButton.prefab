@@ -35,8 +35,8 @@ RectTransform:
   m_Children:
   - {fileID: 7244332983409357617}
   - {fileID: 7587392062085428280}
-  - {fileID: 3935093547590796977}
   - {fileID: 4616076331708393050}
+  - {fileID: 3935093547590796977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 6157023800841842482}
   - component: {fileID: 2755031643858903651}
   m_Layer: 5
-  m_Name: Cost (1)
+  m_Name: Type
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -273,8 +273,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -25.542}
-  m_SizeDelta: {x: 105.7189, y: 34.6584}
+  m_AnchoredPosition: {x: -0.3356, y: -25.542}
+  m_SizeDelta: {x: 108.9417, y: 23.1962}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6157023800841842482
 CanvasRenderer:
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: time 1
+  m_text: HEARTS 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
   m_sharedMaterial: {fileID: -6981615831871449039, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
@@ -331,8 +331,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26
-  m_fontSizeBase: 26
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -408,7 +408,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 26.9, y: -46.99}
-  m_SizeDelta: {x: 49.261, y: 43.4213}
+  m_SizeDelta: {x: 44.9345, y: 43.4213}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &6962943784158865027
 CanvasRenderer:
@@ -482,8 +482,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 24.892, y: -46.99}
-  m_SizeDelta: {x: 50.2159, y: 34.6584}
+  m_AnchoredPosition: {x: 40.504, y: -46.99}
+  m_SizeDelta: {x: 75.194, y: 34.6584}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8915636306408551041
 CanvasRenderer:

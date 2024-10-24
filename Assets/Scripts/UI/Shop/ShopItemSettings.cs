@@ -23,6 +23,7 @@ public class ShopItem
     public int cost;
     public Sprite icon;
     public ShopItemType shopItemType;
-    public int shopItemTypeNum;
+    [Range(1, 3)]
+    public int shopItemTypeNum = 1;
     public int modifier;
 }

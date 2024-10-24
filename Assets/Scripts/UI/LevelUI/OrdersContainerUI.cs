@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class OrdersContainerUI : MonoBehaviour
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
     {
         OrderUI order = Instantiate(orderPrefab, transform);
+        order.transform.DOScale(transform.localScale * 1.1f, 0.3f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
         order.transform.GetChild(0).GetComponent<Slider>().value = totalSeconds;
         order.transform.GetChild(1).GetComponent<Image>().sprite = icon;
         order.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "TABLE "+tableNum;

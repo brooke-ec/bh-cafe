@@ -16,20 +16,20 @@ MonoBehaviour:
   - cost: 30
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     shopItemType: 0
-    shopItemTypeNum: 0
+    shopItemTypeNum: 1
     modifier: 15
   - cost: 100
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     shopItemType: 0
-    shopItemTypeNum: 1
+    shopItemTypeNum: 2
     modifier: 30
   - cost: 150
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     shopItemType: 0
-    shopItemTypeNum: 2
+    shopItemTypeNum: 3
     modifier: 60
   - cost: 30
     icon: {fileID: 21300000, guid: 1123665c9dd171548b505a1fea8a4012, type: 3}
     shopItemType: 1
-    shopItemTypeNum: 0
+    shopItemTypeNum: 1
     modifier: 1
