@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab00b113b3c31c4ca3481614af8f915, type: 3}
+  m_Name: ShopSettings
+  m_EditorClassIdentifier: 
+  shopItems:
+  - cost: 30
+    icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
+    shopItemType: 0
+    shopItemTypeNum: 0
+    modifier: 15
+  - cost: 100
+    icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
+    shopItemType: 0
+    shopItemTypeNum: 1
+    modifier: 30
+  - cost: 150
+    icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
+    shopItemType: 0
+    shopItemTypeNum: 2
+    modifier: 60
+  - cost: 30
+    icon: {fileID: 21300000, guid: 1123665c9dd171548b505a1fea8a4012, type: 3}
+    shopItemType: 1
+    shopItemTypeNum: 0
+    modifier: 1
