@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388620116882749576}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: -5.4}
+  m_LocalRotation: {x: 0.022904456, y: -0, z: -0, w: 0.9997377}
+  m_LocalPosition: {x: 0, y: 2.8000007, z: -10.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6429615700732461956}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 2.625, y: 0, z: 0}
 --- !u!20 &6078970802748547079
 Camera:
   m_ObjectHideFlags: 0
@@ -205,9 +205,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: 100
   moveSpeed: 12
-  life: 3
   jumpPower: 30
   coyoteTime: 0.1
+  fallOverTime: 1
   physicsMultiplier: 1
   cameraSettings:
     lookSensitivity: 0.3
@@ -217,10 +217,7 @@ MonoBehaviour:
   dashSettings:
     dashPower: 5
     dashCooldown: 2
-  fallOverTime: 1
   references:
-    cameraAnchor: {fileID: 6429615700732461956}
-    camera: {fileID: 1683712391869971699}
     animator: {fileID: 2080598075392094524}
     itemAnchor: {fileID: 5994999391003056483}
 --- !u!114 &9055645147149345056

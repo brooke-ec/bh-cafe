@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private References references;
 
     private CharacterController cc;
+    private Animator animator;
 
     /// <summary> The input vector for movement </summary>
     private Vector2 movement;
@@ -56,10 +57,15 @@ public class PlayerController : MonoBehaviour
     /// <summary> Wether input is disabled </summary>
     private bool disabled = false;
 
+    /// <summary> The offset of the camera </summary>
+    private Vector3 cameraOffset;
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        cameraOffset = Camera.main.transform.position - transform.position;
     }
 
     private void Update()
@@ -76,10 +82,12 @@ public class PlayerController : MonoBehaviour
 
         if (dash > 0) dash -= Time.deltaTime;
 
-        references.animator.SetFloat("Fallen", fallen);
-        references.animator.SetFloat("Vertical", vertical);
-        references.animator.SetBool("Grounded", cc.isGrounded);
-        references.animator.SetBool("Holding", heldItem != null);
+        animator.SetFloat("Fallen", fallen);
+        animator.SetFloat("Vertical", vertical);
+        animator.SetBool("Grounded", cc.isGrounded);
+        animator.SetBool("Holding", heldItem != null);
+
+        Camera.main.transform.position = transform.position + cameraOffset;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -129,7 +137,7 @@ public class PlayerController : MonoBehaviour
         if (heldItem == null) return;
         heldItem.transform.parent = null;
         Rigidbody rb = heldItem.AddComponent<Rigidbody>();
-        rb.AddForce(references.animator.transform.forward * 15 + delta + new Vector3(0, 5, 0), ForceMode.Impulse);
+        rb.AddForce(animator.transform.forward * 15 + delta + new Vector3(0, 5, 0), ForceMode.Impulse);
         heldItem = null;   
     }
 
@@ -139,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
         delta = Vector3.zero;
         velocity = (transform.position - point).normalized * 25;
-        references.animator.SetTrigger("Slip");
+        animator.SetTrigger("Slip");
         fallen = fallOverTime;
         vertical = 20;
         GetComponent<Clang>().ClangPlay();
@@ -185,7 +193,7 @@ public class PlayerController : MonoBehaviour
         if (coyote < 0) jump -= Time.deltaTime;
         else if (jump >= 0)
         {
-            references.animator.SetTrigger("Jump");
+            animator.SetTrigger("Jump");
             vertical = jumpPower;
             coyote = -1;
             jump = -1;
@@ -196,12 +204,13 @@ public class PlayerController : MonoBehaviour
     {
         if (disabled) return;
 
-        delta = new Vector3(movement.x, 0, movement.y);
+        float y = Camera.main.transform.eulerAngles.y;
+        delta = Quaternion.Euler(0, y, 0) * new Vector3(movement.x, 0, movement.y);
 
         if (delta == Vector3.zero) return;
         Quaternion rotation = Quaternion.LookRotation(delta, Vector3.up);
-        references.animator.transform.rotation = Quaternion.Lerp(
-            references.animator.transform.rotation,
+        animator.transform.rotation = Quaternion.Lerp(
+            transform.rotation,
             rotation,
             Time.deltaTime * 8
         );
@@ -234,7 +243,7 @@ public class PlayerController : MonoBehaviour
     {
         movement = input.Get<Vector2>() * moveSpeed;
         delta = new Vector3(movement.x, 0, movement.y);
-        references.animator.SetFloat("Speed", movement.magnitude);
+        animator.SetFloat("Speed", movement.magnitude);
     }
 
     public void OnJump()
@@ -258,7 +267,7 @@ public class PlayerController : MonoBehaviour
     public void OnThrow()
     {
         if (disabled || heldItem == null) return;
-        references.animator.SetTrigger("Throw");
+        animator.SetTrigger("Throw");
         Util.RunAfter(0.15f, Throw);
     }
 
@@ -269,7 +278,6 @@ public class PlayerController : MonoBehaviour
     [Serializable]
     public struct References
     {
-        public Animator animator;
         public Transform itemAnchor;
     }
 
