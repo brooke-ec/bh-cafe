@@ -20,9 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController cc;
 
-    /// <summary> The target distance of the camera from the player </summary>
-    private float targetZoom;
-
     /// <summary> The input vector for movement </summary>
     private Vector2 movement;
 
@@ -31,9 +28,6 @@ public class PlayerController : MonoBehaviour
 
     /// <summary> The current vertical velocity of the player </summary>
     private float vertical;
-
-    /// <summary> The input vector of the look control </summary>
-    private Vector2 look;
 
     /// <summary> The amount of coyote time left </summary>
     private float coyote;
@@ -65,7 +59,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         cc = GetComponent<CharacterController>();
-        targetZoom = references.camera.position.z;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -79,7 +72,6 @@ public class PlayerController : MonoBehaviour
         ApplyJump();
         ApplyGravity();
         ApplyMovement();
-        UpdateZoom();
         UpdateInteractables();
 
         if (dash > 0) dash -= Time.deltaTime;
@@ -202,13 +194,9 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyRotation()
     {
-        float x = Util.ClampOut(references.cameraAnchor.eulerAngles.x + look.y, 80, 280);
-        float y = references.cameraAnchor.eulerAngles.y + look.x;
-        references.cameraAnchor.eulerAngles = new Vector3(x, y, 0);
-
         if (disabled) return;
 
-        delta = Quaternion.Euler(0, y, 0) * new Vector3(movement.x, 0, movement.y);
+        delta = new Vector3(movement.x, 0, movement.y);
 
         if (delta == Vector3.zero) return;
         Quaternion rotation = Quaternion.LookRotation(delta, Vector3.up);
@@ -238,36 +226,9 @@ public class PlayerController : MonoBehaviour
         cc.Move(delta * Time.deltaTime);
     }
 
-    private void UpdateZoom()
-    {
-        Ray ray = new Ray(references.cameraAnchor.position, -references.cameraAnchor.forward);
-        float zoom = Physics.Raycast(ray, out RaycastHit hit, Mathf.Abs(targetZoom)) ? 1 - hit.distance : targetZoom;
-
-        references.camera.localPosition = Vector3.Lerp(
-            references.camera.localPosition,
-            new Vector3(0, 0, zoom),
-            Time.deltaTime * 10
-        );
-    }
-
     #endregion
 
     #region Input
-
-    public void OnLook(InputValue input)
-    {
-        look = input.Get<Vector2>() * cameraSettings.lookSensitivity;
-    }
-
-    public void OnZoom(InputValue input) 
-    {
-        Vector2 delta = input.Get<Vector2>();
-        targetZoom = Mathf.Clamp(
-            targetZoom + delta.y * cameraSettings.zoomSpeed,
-            -cameraSettings.maxZoom,
-            -cameraSettings.minZoom
-        );
-    }
 
     public void OnMove(InputValue input)
     {
@@ -308,8 +269,6 @@ public class PlayerController : MonoBehaviour
     [Serializable]
     public struct References
     {
-        public Transform cameraAnchor;
-        public Transform camera;
         public Animator animator;
         public Transform itemAnchor;
     }
