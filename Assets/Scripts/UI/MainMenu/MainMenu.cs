@@ -34,10 +34,10 @@ public class MainMenu : MonoBehaviour
     {
         SavingSystem.instance.SaveToJson();
 
-        Scene sceneToLoad = SceneManager.GetSceneByName("Level"+ lvlSettings.levelNum);
-        if(sceneToLoad.IsValid())
+        int index = SceneUtility.GetBuildIndexByScenePath("Scenes/"+ "Level" + lvlSettings.levelNum);
+        if(index != -1)
         {
-            SceneManager.LoadScene("Level"+ lvlSettings.levelNum);
+            SceneManager.LoadScene(index);
         }
         else
         {
