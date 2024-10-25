@@ -9,10 +9,14 @@ public class LoadSceneFunctionality : MonoBehaviour
     {
         SavingSystem.instance.SaveToJson();
 
-        Scene scene = SceneManager.GetSceneByName(sceneName);
-        if (scene.IsValid())
+        int index = SceneUtility.GetBuildIndexByScenePath("Scenes/" + sceneName);
+        if (index != -1)
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(index);
+        }
+        else
+        {
+            print("Scene doesn't exist");
         }
     }
 }

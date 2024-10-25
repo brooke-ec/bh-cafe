@@ -93,6 +93,7 @@ MonoBehaviour:
     levelNums: 
     highscoreLevel: 
     diamonds: 0
+    shopUpgradesBought: []
   filePathEnd: /save.json
 --- !u!1 &4805701473631131499
 GameObject:
@@ -199,4 +200,4 @@ MonoBehaviour:
     volume: 0.1
     pitch: 1
     audioSource: {fileID: 0}
-  musicToPlay: 0
+  musicToPlay: 1
