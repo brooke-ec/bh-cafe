@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
         if (hit.collider.CompareTag("Customer"))
         {
             hit.gameObject.GetComponent<CustomerController>().Collide(this);
-            God.instance.levelUIManager.LoseHeart();
+            
         }
     }
 

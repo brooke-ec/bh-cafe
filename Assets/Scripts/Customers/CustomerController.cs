@@ -35,7 +35,6 @@ public class CustomerController : MonoBehaviour, ICollidable
     private void Sitting()
     {
         transform.SetPositionAndRotation(table.sitAnchor.position, table.sitAnchor.rotation);
-        GetComponent<Collider>().enabled = false;   
     }
 
     private void Leaving()
@@ -72,6 +71,7 @@ public class CustomerController : MonoBehaviour, ICollidable
         if (IsSitting() || state == Fallen) return;
         player.Fall(transform.position);
         timeFallen = fallOverTime;
+        God.instance.levelUIManager.LoseHeart();
         Leave();
     }
 
