@@ -119,7 +119,11 @@ public class PlayerController : MonoBehaviour
             ForceMode.Force
         );
 
-        if (hit.collider.CompareTag("Customer")) hit.gameObject.GetComponent<CustomerController>().Collide(this);
+        if (hit.collider.CompareTag("Customer"))
+        {
+            hit.gameObject.GetComponent<CustomerController>().Collide(this);
+            God.instance.levelUIManager.LoseHeart();
+        }
     }
 
     public bool IsHolding()
