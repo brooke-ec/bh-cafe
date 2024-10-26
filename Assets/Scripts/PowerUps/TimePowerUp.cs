@@ -6,8 +6,12 @@ public class TimePowerUp : MonoBehaviour
     [SerializeField] private float TimeGained;
     private void OnTriggerEnter(Collider other)
     {
-        God.instance.levelUIManager.AddTime(TimeGained);
-        GetComponent<Collider>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        if (other.CompareTag("Player"))
+        {
+            God.instance.levelUIManager.AddTime(TimeGained);
+            GetComponent<Collider>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.instance.PlaySound(AudioManager.SoundEnum.pickUp);
+        }
     }
 }

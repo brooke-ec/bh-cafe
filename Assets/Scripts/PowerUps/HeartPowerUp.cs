@@ -7,9 +7,13 @@ public class HeartPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        God.instance.levelUIManager.GainHeart();
-        GetComponent<Collider>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
+        if (other.CompareTag("Player"))
+        {
+            God.instance.levelUIManager.GainHeart();
+            GetComponent<Collider>().enabled = false;
+            GetComponent<SpriteRenderer>().enabled = false;
+            AudioManager.instance.PlaySound(AudioManager.SoundEnum.pickUp); 
+        }
     }
 }
    

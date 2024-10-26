@@ -5,6 +5,7 @@ public class God : MonoBehaviour
     public static God instance;
 
     public LevelUIManager levelUIManager;
+    public PlayerController playerController;
 
     private void Awake()
     {

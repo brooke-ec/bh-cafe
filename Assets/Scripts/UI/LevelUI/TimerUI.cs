@@ -40,9 +40,14 @@ public class TimerUI : MonoBehaviour
 
     public void AddTime(float time)
     {
-        currentLevelTime -= time;
-        float rotationToApply = -360f / totalLevelSeconds;
-        arrow.Rotate(new Vector3(0,0,-rotationToApply*time));
+        if (currentLevelTime >= 0)
+        {
+
+
+            currentLevelTime -= time;
+            float rotationToApply = -360f / totalLevelSeconds;
+            arrow.Rotate(new Vector3(0, 0, -rotationToApply * time));
+        }
     }
 
 }

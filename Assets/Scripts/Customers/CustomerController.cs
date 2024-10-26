@@ -35,6 +35,7 @@ public class CustomerController : MonoBehaviour, ICollidable
     private void Sitting()
     {
         transform.SetPositionAndRotation(table.sitAnchor.position, table.sitAnchor.rotation);
+        GetComponent<Collider>().enabled = false;   
     }
 
     private void Leaving()

@@ -21,6 +21,8 @@ public class LevelUIManager : MonoBehaviour
     public GameObject startOfLevelUIPrefab;
     private GameObject startOfLevel;
 
+    
+
     void Awake()
     {
         lvlSettings = Instantiate(lvlSettings);
@@ -33,6 +35,7 @@ public class LevelUIManager : MonoBehaviour
         heartsUI.SetInitialHearts(lvlSettings.numOfHearts);
         timerUI.StartLevelCountdown(lvlSettings.lengthOfLevelMins);
         ordersUI.StartLevel();
+        if(God.instance.playerController != null) God.instance.playerController.LockCamera(true);
     }
 
     public void EndLevel()
@@ -41,6 +44,7 @@ public class LevelUIManager : MonoBehaviour
         print("End of level");
         Instantiate(endOfLevelUIprefab, transform);
         StopAllCoroutines();
+        if (God.instance.playerController != null) God.instance.playerController.LockCamera(false);
     }
 
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
@@ -113,7 +117,7 @@ public class LevelUIManager : MonoBehaviour
 
         transform.gameObject.SetActive(false);
         //StartLevel();
-        //StartCoroutine(WaitSeconds());
+        if (God.instance.playerController != null) God.instance.playerController.LockCamera(false);
     }
     IEnumerator WaitSeconds()
     {
@@ -125,6 +129,27 @@ public class LevelUIManager : MonoBehaviour
             ordersUI.AddNewOrder(100, null, 3);
             scoreUI.ModifyScore(50);
             LoseHeart();
+
+        }
+    }
+    IEnumerator WaitSeconds1()
+    {
+        int seconds = 0;
+        while (seconds <= 3)
+        {
+            seconds++;
+            yield return new WaitForSecondsRealtime(5);
+            GainHeart();
+        }
+    }
+    IEnumerator WaitSeconds2()
+    {
+        int seconds = 0;
+        while (seconds <= 3)
+        {
+            seconds++;
+            yield return new WaitForSecondsRealtime(10);
+            AddTime(5);
         }
     }
     #endregion
