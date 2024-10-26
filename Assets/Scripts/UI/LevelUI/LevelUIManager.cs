@@ -62,6 +62,14 @@ public class LevelUIManager : MonoBehaviour
     {
         heartsUI.LoseHeart();
     }
+    public void GainHeart()
+    {
+        heartsUI.GainHeart();
+    }
+    public void AddTime(float time)
+    {
+        timerUI.AddTime(time);
+    }
 
     private void AddUpgradeBonuses()
     {

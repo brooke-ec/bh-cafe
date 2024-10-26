@@ -6,7 +6,7 @@ public class TimePowerUp : MonoBehaviour
     [SerializeField] private float TimeGained;
     private void OnTriggerEnter(Collider other)
     {
-        // Add time code goes here
+        God.instance.levelUIManager.AddTime(TimeGained);
         GetComponent<Collider>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }

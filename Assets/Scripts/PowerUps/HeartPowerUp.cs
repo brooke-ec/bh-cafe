@@ -7,7 +7,7 @@ public class HeartPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // increase heart code goes here
+        God.instance.levelUIManager.GainHeart();
         GetComponent<Collider>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }

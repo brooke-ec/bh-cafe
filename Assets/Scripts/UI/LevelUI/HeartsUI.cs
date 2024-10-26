@@ -7,8 +7,10 @@ public class HeartsUI : MonoBehaviour
 {
     public GameObject heartPrefab;
     public Sprite greyHeartSprite;
+    public Sprite redHeartSprite;
 
     private int currentHealth;
+    private int maxHealth;
     // Start is called before the first frame update
     public void SetInitialHearts(int numOfHearts)
     {
@@ -17,6 +19,7 @@ public class HeartsUI : MonoBehaviour
             Instantiate(heartPrefab, transform);
         }
         currentHealth = numOfHearts;
+        maxHealth = numOfHearts;
     }
 
     public void LoseHeart()
@@ -32,4 +35,14 @@ public class HeartsUI : MonoBehaviour
             God.instance.levelUIManager.EndLevel();
         }
     }
+
+    public void GainHeart()
+    {
+        if (currentHealth < maxHealth)
+        {
+            transform.GetChild(currentHealth).GetComponent<Image>().sprite = redHeartSprite;
+            currentHealth++;
+        }
+    }
+
 }
