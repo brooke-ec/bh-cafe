@@ -50,4 +50,22 @@ public static class Util
     {
         return array[Random.Range(0, array.Length - 1)];
     }
+
+    /// <summary>
+    /// Converts a position in the world to a position on the canvas.
+    /// </summary>
+    /// <param name="canvas">The canvas to get a position on</param>
+    /// <param name="position">The world position</param>
+    /// <returns>The canvas position</returns>
+    public static Vector2 WorldToCanvasPosition(RectTransform canvas, Vector3 position)
+    {
+        Vector3 result = Camera.main.WorldToScreenPoint(position);
+
+        if (result.z < 0) return Vector2.negativeInfinity;
+
+        result.x -= canvas.sizeDelta.x * canvas.pivot.x;
+        result.y -= canvas.sizeDelta.y * canvas.pivot.y;
+
+        return result;
+    }
 }

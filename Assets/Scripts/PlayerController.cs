@@ -2,6 +2,7 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -43,16 +44,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     /// <summary> The item the player is currently holding </summary>
-    private GameObject heldItem;
+    [HideInInspector] public GameObject heldItem;
 
     /// <summary> Time since fallen over </summary>
     private float fallen = 0;
 
-    /// <summary> A list of interactables in range </summary>
-    private List<Interactable> interactables = new List<Interactable>();
+    /// <summary> All interactables in range </summary>
+    private readonly List<IInteractable> interactables = new();
 
     /// <summary> The nearest interactable in range </summary>
-    private Interactable closestInteractable;
+    private IInteractable interactable;
 
     /// <summary> Wether input is disabled </summary>
     private bool disabled = false;
@@ -60,10 +61,13 @@ public class PlayerController : MonoBehaviour
     /// <summary> The offset of the camera </summary>
     private Vector3 cameraOffset;
 
+    #region Events
+
     private void Start()
     {
         cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
         Cursor.lockState = CursorLockMode.Locked;
         cameraOffset = Camera.main.transform.position - transform.position;
     }
@@ -90,19 +94,20 @@ public class PlayerController : MonoBehaviour
         Camera.main.transform.position = transform.position + cameraOffset;
     }
 
+    private void OnDestroy()
+    {
+        Destroy(references.marker.gameObject);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Spill")) Fall(other.transform.position);
-        if (other.TryGetComponent(out Interactable interactable)) interactables.Add(interactable);
+        if (other.TryGetComponent(out IInteractable interactable)) interactables.Add(interactable);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent(out Interactable interactable))
-        {
-            interactables.Remove(interactable);
-            interactable.active = false;
-        }
+        if (other.TryGetComponent(out IInteractable interactable)) interactables.Remove(interactable);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -114,8 +119,7 @@ public class PlayerController : MonoBehaviour
             ForceMode.Force
         );
 
-        if (hit.collider.CompareTag("Customer"))
-            hit.gameObject.GetComponent<CustomerController>().Collide(this);
+        if (hit.collider.CompareTag("Customer")) hit.gameObject.GetComponent<CustomerController>().Collide(this);
     }
 
     public bool IsHolding()
@@ -130,6 +134,14 @@ public class PlayerController : MonoBehaviour
         heldItem.transform.parent = references.itemAnchor;
         heldItem.transform.localRotation = Quaternion.identity;
         heldItem.transform.localPosition = Vector3.zero;
+    }
+
+    #endregion
+
+    public void ClearHeld()
+    {
+        Destroy(heldItem);
+        heldItem = null;
     }
 
     public void Throw()
@@ -167,17 +179,9 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInteractables()
     {
-        float closest = float.PositiveInfinity;
-        closestInteractable = null;
-
-        foreach (Interactable interactable in interactables)
-        {
-            interactable.active = false;
-            Vector3 distance = transform.position - interactable.transform.position;
-            if (distance.sqrMagnitude < closest) closestInteractable = interactable;
-        }
-
-        if (closestInteractable != null) closestInteractable.active = true;
+        interactable = null;
+        interactable = interactables.OrderByDescending(x => transform.position - x.transform.position).FirstOrDefault();
+        references.marker.interactable = interactable;
     }
 
     private void ApplyFallen()
@@ -260,8 +264,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract()
     {
-        if (closestInteractable == null) return;
-        closestInteractable.Interact();
+        if (interactable == null || !interactable.IsInteractable()) return;
+        interactable.Interact(this);
     }
 
     public void OnThrow()
@@ -279,6 +283,7 @@ public class PlayerController : MonoBehaviour
     public struct References
     {
         public Transform itemAnchor;
+        public Marker marker;
     }
 
     [Serializable]

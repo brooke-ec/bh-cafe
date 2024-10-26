@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CustomerController : MonoBehaviour
+public class CustomerController : MonoBehaviour, ICollidable
 {
     [SerializeField] private float fallOverTime;
     public TableController table;
@@ -16,6 +16,7 @@ public class CustomerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
         SetState(Arriving);
     }
     
@@ -70,6 +71,11 @@ public class CustomerController : MonoBehaviour
         if (IsSitting() || state == Fallen) return;
         player.Fall(transform.position);
         timeFallen = fallOverTime;
-        SetState(Fallen);
+        Leave();
+    }
+
+    public void Leave()
+    {
+        SetState(Leaving);
     }
 }
