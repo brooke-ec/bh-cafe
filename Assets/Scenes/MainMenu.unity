@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: b6d9589f6d40e3f4584e283c7d59afab, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b6d9589f6d40e3f4584e283c7d59afab, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_Name
       value: LevelButton (3)
@@ -925,6 +929,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: a47c347674e03ee4095cd4b23492ca0d, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: a47c347674e03ee4095cd4b23492ca0d, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_Name
       value: LevelButton (4)
@@ -1112,6 +1120,10 @@ PrefabInstance:
       objectReference: {fileID: 1344394717}
     - target: {fileID: 1545147492665304760, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c9a3ca3ce2dff14eb971e81b2a8d728, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
       value: 
       objectReference: {fileID: 11400000, guid: 3c9a3ca3ce2dff14eb971e81b2a8d728, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
@@ -1522,6 +1534,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: b31773923d94347448b0a1b4fc55b18d, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: b31773923d94347448b0a1b4fc55b18d, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_Name
       value: LevelButton (1)
@@ -1644,6 +1660,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 11400000, guid: 18160cc12e19b3b43a072719a2372422, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 18160cc12e19b3b43a072719a2372422, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_Name
       value: LevelButton (5)
@@ -1764,6 +1784,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1545147492665304760, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 83efe2e7219046a4ca024e5b585c7984, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
       value: 
       objectReference: {fileID: 11400000, guid: 83efe2e7219046a4ca024e5b585c7984, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
@@ -3137,6 +3161,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1545147492665304760, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: c3b5c5ea41afc5849bc511d5cf00079d, type: 2}
+    - target: {fileID: 2102517645475519711, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
+      propertyPath: levelSettings
       value: 
       objectReference: {fileID: 11400000, guid: c3b5c5ea41afc5849bc511d5cf00079d, type: 2}
     - target: {fileID: 3553583345041627827, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
