@@ -13,27 +13,75 @@ MonoBehaviour:
   m_Name: ShopSettings
   m_EditorClassIdentifier: 
   shopItems:
-  - cost: 30
+  - cost: 60
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     info:
       shopItemType: 0
       shopItemTypeNum: 1
     modifier: 1
-  - cost: 100
+  - cost: 110
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     info:
       shopItemType: 0
       shopItemTypeNum: 2
     modifier: 1
-  - cost: 150
+  - cost: 160
     icon: {fileID: 21300000, guid: 342b9a16ff0890c4e81daa4640292d27, type: 3}
     info:
       shopItemType: 0
       shopItemTypeNum: 3
-    modifier: 2
-  - cost: 30
+    modifier: 1
+  - cost: 60
     icon: {fileID: 21300000, guid: 1123665c9dd171548b505a1fea8a4012, type: 3}
     info:
       shopItemType: 1
       shopItemTypeNum: 1
     modifier: 1
+  - cost: 110
+    icon: {fileID: 21300000, guid: 1123665c9dd171548b505a1fea8a4012, type: 3}
+    info:
+      shopItemType: 1
+      shopItemTypeNum: 2
+    modifier: 1
+  - cost: 160
+    icon: {fileID: 21300000, guid: 1123665c9dd171548b505a1fea8a4012, type: 3}
+    info:
+      shopItemType: 1
+      shopItemTypeNum: 3
+    modifier: 1
+  - cost: 50
+    icon: {fileID: 21300000, guid: 2ffd3f773fc3e31459ded10bbbbad586, type: 3}
+    info:
+      shopItemType: 2
+      shopItemTypeNum: 1
+    modifier: 1
+  - cost: 80
+    icon: {fileID: 21300000, guid: 2ffd3f773fc3e31459ded10bbbbad586, type: 3}
+    info:
+      shopItemType: 2
+      shopItemTypeNum: 2
+    modifier: 2
+  - cost: 110
+    icon: {fileID: 21300000, guid: 2ffd3f773fc3e31459ded10bbbbad586, type: 3}
+    info:
+      shopItemType: 2
+      shopItemTypeNum: 3
+    modifier: 3
+  - cost: 60
+    icon: {fileID: 21300000, guid: 797d930aeeb94e9428c7570a9e6a916c, type: 3}
+    info:
+      shopItemType: 3
+      shopItemTypeNum: 1
+    modifier: 5
+  - cost: 130
+    icon: {fileID: 21300000, guid: 797d930aeeb94e9428c7570a9e6a916c, type: 3}
+    info:
+      shopItemType: 3
+      shopItemTypeNum: 2
+    modifier: 5
+  - cost: 200
+    icon: {fileID: 21300000, guid: 797d930aeeb94e9428c7570a9e6a916c, type: 3}
+    info:
+      shopItemType: 3
+      shopItemTypeNum: 3
+    modifier: 5

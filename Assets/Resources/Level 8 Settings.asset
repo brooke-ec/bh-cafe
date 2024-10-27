@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bffdcdd40894d74fa1afcde48da82b4, type: 3}
-  m_Name: Level 1 Settings
+  m_Name: Level 8 Settings
   m_EditorClassIdentifier: 
-  levelNum: 1
-  levelDescription: 'Welcome! '
-  numOfHearts: 2
-  lengthOfLevelMins: 2
-  scoreNeededForLevel: 70
-  scoreReductionForHealth: 10
-  extraDiamondPercentage: 20
+  levelNum: 8
+  levelDescription: The Final One!!
+  numOfHearts: 4
+  lengthOfLevelMins: 3
+  scoreNeededForLevel: 500
+  scoreReductionForHealth: 40
+  extraDiamondPercentage: 30

@@ -19,4 +19,17 @@ public class LoadSceneFunctionality : MonoBehaviour
             print("Scene doesn't exist");
         }
     }
+
+    public void LoadLevel(bool loadThisLevel)
+    {
+        if (loadThisLevel)
+        {
+            LoadScene("Level"+God.instance.levelUIManager.lvlSettings.levelNum);
+        }
+        else
+        {
+            LoadScene("Level" + God.instance.levelUIManager.lvlSettings.levelNum+1);
+        }
+
+    }
 }

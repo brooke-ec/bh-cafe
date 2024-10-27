@@ -893,11 +893,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 634141402}
   m_CullTransparentMesh: 1
---- !u!1 &793455976 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 386369407820464364, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
-  m_PrefabInstance: {fileID: 1261248466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &795866419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1851,8 +1846,20 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 386369407820464364, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
       propertyPath: m_Name
-      value: creditsButton
+      value: tutorialButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2507795321491847664, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1344394717}
+    - target: {fileID: 2507795321491847664, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenTab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507795321491847664, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1393441479}
     - target: {fileID: 2648747713936762307, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1944,29 +1951,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 386369407820464364, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1261248471}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
 --- !u!224 &1261248467 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2648747713936762307, guid: 440902d7551b3fd47a68313010bcd6c4, type: 3}
   m_PrefabInstance: {fileID: 1261248466}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1261248471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793455976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24787ec9f95991349a8c3ad7429afcd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endScale: 1.1
 --- !u!1 &1344394715
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,7 +2114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1393441479
 RectTransform:
   m_ObjectHideFlags: 0
