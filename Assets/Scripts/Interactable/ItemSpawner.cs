@@ -22,7 +22,7 @@ public class ItemSpawner : MonoBehaviour, IInteractable
         timer = cooldown;
     }
 
-    bool IInteractable.IsInteractable()
+    bool IInteractable.IsActive()
     {
         return timer <= 0;
     }
@@ -30,5 +30,15 @@ public class ItemSpawner : MonoBehaviour, IInteractable
     string IInteractable.GetText()
     {
         return timer <= 0 ? "To Pickup" : $"{label} ({Mathf.CeilToInt(timer)})";
+    }
+
+    bool IInteractable.IsVisible()
+    {
+        return true;
+    }
+
+    Vector3 IInteractable.GetOffset()
+    {
+        return Vector3.zero;
     }
 }

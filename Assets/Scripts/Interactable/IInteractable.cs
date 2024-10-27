@@ -4,6 +4,8 @@ public interface IInteractable
 {
     Transform transform { get; }
     void Interact(PlayerController player);
-    bool IsInteractable();
+    bool IsVisible();
+    bool IsActive();
     string GetText();
+    Vector3 GetOffset();
 }

@@ -32,10 +32,13 @@ public class Marker : MonoBehaviour
         anchor = interactable ?? anchor;
         if (anchor == null) return;
 
-        references.description.text = anchor.GetText();
-        references.button.SetActive(anchor.IsInteractable());
-        image.sprite = anchor.IsInteractable() ? references.enabled : references.disabled;
-        rect.anchoredPosition = Util.WorldToCanvasPosition(canvas, anchor.transform.position);
+        try
+        {
+            references.description.text = anchor.GetText();
+            references.button.SetActive(anchor.IsActive());
+            image.sprite = anchor.IsActive() ? references.enabled : references.disabled;
+            rect.anchoredPosition = Util.WorldToCanvasPosition(canvas, anchor.transform.position + anchor.GetOffset());
+        } catch (MissingReferenceException) { anchor = null; }
     }
 
     [Serializable]

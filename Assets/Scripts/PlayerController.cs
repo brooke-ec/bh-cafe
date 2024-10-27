@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        Destroy(references.marker.gameObject);
+        if (references.marker != null) Destroy(references.marker.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -180,7 +180,10 @@ public class PlayerController : MonoBehaviour
     private void UpdateInteractables()
     {
         interactable = null;
-        interactable = interactables.OrderByDescending(x => transform.position - x.transform.position).FirstOrDefault();
+        interactable = interactables
+            .Where(x => x.IsVisible())
+            .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
+            .FirstOrDefault();
         references.marker.interactable = interactable;
     }
 
@@ -264,7 +267,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract()
     {
-        if (interactable == null || !interactable.IsInteractable()) return;
+        if (interactable == null || !interactable.IsActive()) return;
         interactable.Interact(this);
     }
 

@@ -64,13 +64,45 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7670638196022979519, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7134394785105016132, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5151492872390713093, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -5069531478518834764, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_Name
       value: Customer
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_TagString
       value: Customer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250163066507786643, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4361710834771507933, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5788240856288092216, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_Controller
@@ -79,6 +111,14 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8303906797054990637, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8908311948669537042, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -96,6 +136,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3149848378179457134}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7527664735796796771}
   m_SourcePrefab: {fileID: 100100000, guid: 608f989acace62b4d93581069ae97e2e, type: 3}
 --- !u!1 &8615059549901197924 stripped
 GameObject:
@@ -115,8 +158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallOverTime: 2
+  pickup: {fileID: 5322409069708740184, guid: 0fbccfa06ba66974ab32219694e6963f, type: 3}
   table: {fileID: 0}
   exit: {fileID: 0}
+  waitTime: 8
 --- !u!195 &3049379840403561683
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -189,3 +234,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &7527664735796796771
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8615059549901197924}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0.33, z: 0}
