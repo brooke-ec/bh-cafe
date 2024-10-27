@@ -22,6 +22,7 @@ public class PointPickup : MonoBehaviour
     {
         if (delay > 0) return;
         if (!other.CompareTag("Player")) return;
+        God.instance.levelUIManager.GainDiamond(1);
         Destroy(gameObject);
     }
 }
