@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     /// <summary> The item the player is currently holding </summary>
-    [HideInInspector] public GameObject heldItem;
+    [HideInInspector] public Item heldItem;
 
     /// <summary> Time since fallen over </summary>
     private float fallen = 0;
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
     public void Pickup(GameObject gameObject)
     {
         if (heldItem != null) return;
-        heldItem = gameObject;
+        heldItem = gameObject.GetComponent<Item>();
         heldItem.transform.parent = references.itemAnchor;
         heldItem.transform.localRotation = Quaternion.identity;
         heldItem.transform.localPosition = Vector3.zero;
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
 
     public void ClearHeld()
     {
-        Destroy(heldItem);
+        Destroy(heldItem.gameObject);
         heldItem = null;
     }
 
@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
     {
         if (heldItem == null) return;
         heldItem.transform.parent = null;
-        Rigidbody rb = heldItem.AddComponent<Rigidbody>();
+        Rigidbody rb = heldItem.gameObject.AddComponent<Rigidbody>();
         rb.AddForce(animator.transform.forward * 15 + delta + new Vector3(0, 5, 0), ForceMode.Impulse);
         heldItem = null;   
     }

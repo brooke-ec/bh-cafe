@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max: {x: 5, y: 2}
+  delay: 1
 --- !u!65 &1013022309532713668
 BoxCollider:
   m_ObjectHideFlags: 0

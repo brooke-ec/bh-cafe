@@ -159,9 +159,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallOverTime: 2
   pickup: {fileID: 5322409069708740184, guid: 0fbccfa06ba66974ab32219694e6963f, type: 3}
+  waitTime: 8
+  options: 0100000002000000
   table: {fileID: 0}
   exit: {fileID: 0}
-  waitTime: 8
 --- !u!195 &3049379840403561683
 NavMeshAgent:
   m_ObjectHideFlags: 0

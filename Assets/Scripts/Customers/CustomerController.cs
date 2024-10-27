@@ -5,14 +5,18 @@ public class CustomerController : MonoBehaviour, IInteractable
 {
     [SerializeField] private float fallOverTime;
     [SerializeField] private GameObject pickup;
-    public TableController table;
-    public Transform exit;
-    public float waitTime;
+    [SerializeField] private float waitTime;
+    
+    [SerializeField] private Item.Type[] options;
+    
+    [HideInInspector] public TableController table;
+    [HideInInspector] public Transform exit;
 
     private PlayerController player;
     private NavMeshAgent agent;
     private Animator animator;
     private float timeFallen;
+    private Item.Type order;
     private State state;
 
     private void Start()
@@ -21,6 +25,7 @@ public class CustomerController : MonoBehaviour, IInteractable
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
+        order = Util.PickRandom(options);
         state = State.Arriving;
     }
     
@@ -75,9 +80,9 @@ public class CustomerController : MonoBehaviour, IInteractable
         return state == State.Sitting;
     }
 
-    public bool HeldCorrect()
+    public bool HoldingCorrect()
     {
-        return player.heldItem != null;
+        return player.heldItem != null && player.heldItem.GetType() == order;
     }
 
     public void Collide(PlayerController player)
@@ -91,7 +96,7 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     void IInteractable.Interact(PlayerController player)
     {
-        if (!HeldCorrect()) return;
+        if (!HoldingCorrect()) return;
         state = State.Leaving;
         player.ClearHeld();
 
@@ -104,12 +109,12 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     bool IInteractable.IsActive()
     {
-        return HeldCorrect();
+        return HoldingCorrect();
     }
 
     string IInteractable.GetText()
     {
-        return (HeldCorrect() ? "Serve" : "Coffee") + $" ({Mathf.RoundToInt(waitTime)})";
+        return (HoldingCorrect() ? "Serve" : order) + $" ({Mathf.RoundToInt(waitTime)})";
     }
 
     bool IInteractable.IsVisible()

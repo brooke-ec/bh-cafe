@@ -48,7 +48,8 @@ public static class Util
     /// <returns>A random item from the array</returns>
     public static T PickRandom<T>(T[] array)
     {
-        return array[Random.Range(0, array.Length - 1)];
+        if (array.Length == 0) return default(T);
+        return array[Random.Range(0, array.Length)];
     }
 
     /// <summary>
