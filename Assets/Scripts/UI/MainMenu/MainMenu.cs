@@ -10,6 +10,7 @@ public class MainMenu : MonoBehaviour
 
     [Header("Levels")]
     public Transform levelButtonsContainer;
+    public Transform tutorialContainer;
     public Sprite levelLocked;
     public Sprite levelCompleted;
 
@@ -24,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         buttonsContainer.gameObject.SetActive(false);
         levelsContainer.gameObject.SetActive(false);
+        tutorialContainer.gameObject.SetActive(false);
 
         container.gameObject.SetActive(true);
     }

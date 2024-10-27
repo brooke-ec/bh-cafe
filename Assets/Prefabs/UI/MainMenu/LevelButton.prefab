@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL 2
+  m_text: LEVEL 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
   m_sharedMaterial: {fileID: -6981615831871449039, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
@@ -146,8 +146,8 @@ GameObject:
   - component: {fileID: 5385290671525496947}
   - component: {fileID: 6314340735668599652}
   - component: {fileID: 1545147492665304760}
-  - component: {fileID: 2512249952223585149}
   - component: {fileID: 8562227573162838381}
+  - component: {fileID: 2102517645475519711}
   m_Layer: 5
   m_Name: LevelButton
   m_TagString: Untagged
@@ -265,24 +265,11 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 11400000, guid: d18173a8199f08e4cbd8eac63e7f0e03, type: 2}
           m_ObjectArgumentAssemblyTypeName: LevelSettings, Assembly-CSharp
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2512249952223585149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3553583345041627827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2a9d230ebd308e48bc35879f6f4384a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelSettings: {fileID: 11400000, guid: d18173a8199f08e4cbd8eac63e7f0e03, type: 2}
 --- !u!114 &8562227573162838381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +283,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScale: 1.05
+--- !u!114 &2102517645475519711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3553583345041627827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a9d230ebd308e48bc35879f6f4384a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSettings: {fileID: 11400000, guid: d18173a8199f08e4cbd8eac63e7f0e03, type: 2}
 --- !u!1 &4208175851111053351
 GameObject:
   m_ObjectHideFlags: 0

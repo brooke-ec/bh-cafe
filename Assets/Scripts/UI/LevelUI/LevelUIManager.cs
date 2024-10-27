@@ -62,6 +62,11 @@ public class LevelUIManager : MonoBehaviour
         return scoreUI.score;
     }
 
+    public void GainDiamond(int amount)
+    {
+        SavingSystem.instance.saveData.diamonds += amount;
+    }
+
     public void LoseHeart()
     {
         heartsUI.LoseHeart();
