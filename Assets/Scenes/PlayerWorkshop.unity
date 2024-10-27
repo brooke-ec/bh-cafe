@@ -625,7 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346540b09fa8f1a4f9371b6fcb32e839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 6443595191682957391, guid: 9e0f677b56430b544a21d6f5ec443ce9, type: 3}
+  items: []
   cooldown: 10
   label: Cooking
 --- !u!135 &556333045
@@ -2486,6 +2486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUIManager: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!4 &1886755031
 Transform:
   m_ObjectHideFlags: 0
@@ -3240,46 +3241,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 804045437970671232, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 804045437970671232, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2379511255173839348, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2379511255173839348, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2379511255173839348, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2379511255173839348, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458681872439750384, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458681872439750384, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458681872439750384, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2458681872439750384, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4202052974533849340, guid: b03e28089fdcf8444ba1fecfc530e949, type: 3}
       propertyPath: m_Name
       value: Table
@@ -3342,8 +3303,8 @@ SceneRoots:
   - {fileID: 3646215129815518389}
   - {fileID: 1444398539}
   - {fileID: 9211251975483894188}
-  - {fileID: 6814830097251613521}
   - {fileID: 984072415}
   - {fileID: 2000315297}
   - {fileID: 7369203641934997788}
   - {fileID: 556333042}
+  - {fileID: 61552120}

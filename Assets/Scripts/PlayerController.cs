@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private bool disabled = false;
 
     /// <summary> The offset of the camera </summary>
-    private Vector3 cameraOffset;
+    private Vector3 cameraMax;
 
     #region Events
 
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         //Cursor.lockState = CursorLockMode.Locked;
-        cameraOffset = Camera.main.transform.position - transform.position;
+        cameraMax = Camera.main.transform.position - transform.position;
     }
 
     private void Update()
@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviour
         ApplyGravity();
         ApplyMovement();
         UpdateInteractables();
+        UpdateCamera();
 
         if (dash > 0) dash -= Time.deltaTime;
 
@@ -90,8 +91,6 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Vertical", vertical);
         animator.SetBool("Grounded", cc.isGrounded);
         animator.SetBool("Holding", heldItem != null);
-
-        Camera.main.transform.position = transform.position + cameraOffset;
     }
 
     private void OnDestroy()
@@ -248,6 +247,23 @@ public class PlayerController : MonoBehaviour
 
         if (delta == Vector3.zero) return;
         cc.Move(delta * Time.deltaTime);
+    }
+
+    private void UpdateCamera()
+    {
+        Ray ray;
+        RaycastHit hit;
+
+        ray = new Ray(transform.position + new Vector3(0, 1, 0), Vector3.up);
+        float y = Physics.Raycast(ray, out hit, cameraMax.y) ? hit.distance : cameraMax.y;
+
+        ray = new Ray(transform.position + new Vector3(0, y - 1, 0), Vector3.left);
+        float x = Physics.Raycast(ray, out hit, Mathf.Abs(cameraMax.x)) ? -hit.distance : cameraMax.x;
+        
+        Vector3 target = transform.position + new Vector3(x + 1, y, 0);
+        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, target, Time.deltaTime * 10);
+
+        Camera.main.transform.rotation = Quaternion.Euler(-Mathf.Atan(y / x) * Mathf.Rad2Deg, 90, 0);
     }
 
     #endregion
