@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffdcdd40894d74fa1afcde48da82b4, type: 3}
   m_Name: Level 7 Settings
   m_EditorClassIdentifier: 
-  levelNum: 0
-  levelDescription: 
-  numOfHearts: 0
-  lengthOfLevelMins: 0
-  scoreNeededForLevel: 0
-  scoreReductionForHealth: 0
+  levelNum: 7
+  levelDescription: Running out of life
+  numOfHearts: 3
+  lengthOfLevelMins: 2
+  scoreNeededForLevel: 450
+  scoreReductionForHealth: 40
   extraDiamondPercentage: 20

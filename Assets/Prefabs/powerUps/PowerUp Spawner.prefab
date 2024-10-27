@@ -48,4 +48,4 @@ MonoBehaviour:
   - {fileID: 8159420300392201209, guid: dca71478f957a1548b995563c38adb07, type: 3}
   - {fileID: 8160800147267200877, guid: e71e3caefaf8b2a469c2b5ccb7d7b2b1, type: 3}
   - {fileID: 6278056102782651717, guid: 87bd6dfed83f9184a9ec0c287f36f565, type: 3}
-  SpawnRate: 15
+  SpawnRate: 5

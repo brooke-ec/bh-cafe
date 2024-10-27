@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bffdcdd40894d74fa1afcde48da82b4, type: 3}
   m_Name: Level 2 Settings
   m_EditorClassIdentifier: 
-  levelNum: 0
-  levelDescription: 
-  numOfHearts: 0
-  lengthOfLevelMins: 0
-  scoreNeededForLevel: 0
-  scoreReductionForHealth: 0
+  levelNum: 2
+  levelDescription: Watch out for the Coffee Spills
+  numOfHearts: 4
+  lengthOfLevelMins: 1
+  scoreNeededForLevel: 140
+  scoreReductionForHealth: 10
   extraDiamondPercentage: 20

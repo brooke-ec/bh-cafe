@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Level 6 Settings
   m_EditorClassIdentifier: 
   levelNum: 6
-  levelDescription: 
-  numOfHearts: 0
-  lengthOfLevelMins: 0
-  scoreNeededForLevel: 0
-  scoreReductionForHealth: 0
+  levelDescription: Time is Getting Shorter!
+  numOfHearts: 4
+  lengthOfLevelMins: 2
+  scoreNeededForLevel: 400
+  scoreReductionForHealth: 30
   extraDiamondPercentage: 20

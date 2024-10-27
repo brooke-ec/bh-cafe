@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 8
   levelDescription: The Final One!!
-  numOfHearts: 4
-  lengthOfLevelMins: 3
+  numOfHearts: 3
+  lengthOfLevelMins: 2
   scoreNeededForLevel: 500
   scoreReductionForHealth: 40
   extraDiamondPercentage: 30
