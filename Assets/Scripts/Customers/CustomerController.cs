@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,7 +29,14 @@ public class CustomerController : MonoBehaviour, IInteractable
         order = Util.PickRandom(options);
         state = State.Arriving;
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!IsSitting() || !other.TryGetComponent(out Item item) || other.attachedRigidbody == null) return;
+        Destroy(other.gameObject);
+        Succeed();
+    }
+
     // A finite state machine
     private void Update()
     {
@@ -75,6 +83,16 @@ public class CustomerController : MonoBehaviour, IInteractable
         waitTime = -1;
     }
 
+    private void Succeed()
+    {
+        state = State.Leaving;
+        for (int i = 0; i < 5; i++) Instantiate(
+            pickup,
+            transform.position + Vector3.up * 1,
+            Quaternion.identity
+        );
+    }
+
     public bool IsSitting()
     {
         return state == State.Sitting;
@@ -97,14 +115,8 @@ public class CustomerController : MonoBehaviour, IInteractable
     void IInteractable.Interact(PlayerController player)
     {
         if (!HoldingCorrect()) return;
-        state = State.Leaving;
         player.ClearHeld();
-
-        for (int i = 0; i < 5; i++) Instantiate(
-            pickup,
-            transform.position + Vector3.up * 1,
-            Quaternion.identity
-        );
+        Succeed();
     }
 
     bool IInteractable.IsActive()
