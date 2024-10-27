@@ -1412,7 +1412,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DESCRIPTION OF THE GAME
+  m_text: "Do you work in a cafe?\n ever wanted to throw coffee at a customer? \nWell
+    now you can with Blahajs Cafe!\n\ncollect coffee and burgers from the coffee
+    machine and oven and then run them over to the customer as quick as possible.\n\nif
+    your in a rush just press q and you can throw them at your lovely customers,\nonce
+    you've served them pick up the money they leave behind to score your points.\nscore
+    as many points in the time as you can!\n\nwatch out, dont hit the customers!\nand
+    look out for spills!\n\nW,A,S,D to move\nE to pick up and serve\nq to throw\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
   m_sharedMaterial: {fileID: -6981615831871449039, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
@@ -1439,8 +1445,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1475,7 +1481,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -41.363464}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2017,7 +2023,7 @@ MonoBehaviour:
   buttonsContainer: {fileID: 634141403}
   levelsContainer: {fileID: 1450767047}
   levelButtonsContainer: {fileID: 1667968736}
-  tutorialContainer: {fileID: 0}
+  tutorialContainer: {fileID: 1393441479}
   levelLocked: {fileID: 21300000, guid: 9ebb15a3be2b8924ab7f2557c8ebcce7, type: 3}
   levelCompleted: {fileID: 21300000, guid: 28bfaeb95822e7b40ae9732ef85bab4b, type: 3}
 --- !u!1 &1383108073
