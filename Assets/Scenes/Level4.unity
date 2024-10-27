@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 117673033}
   - component: {fileID: 117673032}
   - component: {fileID: 117673031}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall z (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 244118040}
   - component: {fileID: 244118039}
   - component: {fileID: 244118038}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3119,7 +3119,7 @@ GameObject:
   - component: {fileID: 544342162}
   - component: {fileID: 544342161}
   - component: {fileID: 544342160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: kitchen wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3224,7 +3224,7 @@ GameObject:
   - component: {fileID: 550323042}
   - component: {fileID: 550323041}
   - component: {fileID: 550323040}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Wall z (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4387,7 +4387,7 @@ GameObject:
   - component: {fileID: 704728722}
   - component: {fileID: 704728721}
   - component: {fileID: 704728720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall -x (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7530,7 +7530,7 @@ GameObject:
   - component: {fileID: 1239741290}
   - component: {fileID: 1239741289}
   - component: {fileID: 1239741288}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10826,7 +10826,7 @@ GameObject:
   - component: {fileID: 1733539562}
   - component: {fileID: 1733539561}
   - component: {fileID: 1733539560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11490,7 +11490,7 @@ GameObject:
   - component: {fileID: 1795871504}
   - component: {fileID: 1795871503}
   - component: {fileID: 1795871502}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall z (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12880,7 +12880,7 @@ GameObject:
   - component: {fileID: 2012168801}
   - component: {fileID: 2012168800}
   - component: {fileID: 2012168799}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall z (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13364,7 +13364,7 @@ GameObject:
   - component: {fileID: 2145074923}
   - component: {fileID: 2145074922}
   - component: {fileID: 2145074921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

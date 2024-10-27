@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -254,11 +255,13 @@ public class PlayerController : MonoBehaviour
         Ray ray;
         RaycastHit hit;
 
+        int mask = LayerMask.GetMask("Structure");
+
         ray = new Ray(transform.position + new Vector3(0, 1, 0), Vector3.up);
-        float y = Physics.Raycast(ray, out hit, cameraMax.y) ? hit.distance : cameraMax.y;
+        float y = Physics.Raycast(ray, out hit, cameraMax.y, mask) ? hit.distance : cameraMax.y;
 
         ray = new Ray(transform.position + new Vector3(0, y - 1, 0), Vector3.left);
-        float x = Physics.Raycast(ray, out hit, Mathf.Abs(cameraMax.x)) ? -hit.distance : cameraMax.x;
+        float x = Physics.Raycast(ray, out hit, Mathf.Abs(cameraMax.x), mask) ? -hit.distance : cameraMax.x;
         
         Vector3 target = transform.position + new Vector3(x + 1, y, 0);
         Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, target, Time.deltaTime * 10);

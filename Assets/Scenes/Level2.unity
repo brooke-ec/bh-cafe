@@ -2709,7 +2709,7 @@ GameObject:
   - component: {fileID: 503056037}
   - component: {fileID: 503056036}
   - component: {fileID: 503056035}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5183,7 +5183,7 @@ GameObject:
   - component: {fileID: 874897259}
   - component: {fileID: 874897258}
   - component: {fileID: 874897257}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: kitchen wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11370,7 +11370,7 @@ GameObject:
   - component: {fileID: 1733539562}
   - component: {fileID: 1733539561}
   - component: {fileID: 1733539560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

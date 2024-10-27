@@ -1391,7 +1391,7 @@ GameObject:
   - component: {fileID: 244118040}
   - component: {fileID: 244118039}
   - component: {fileID: 244118038}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4621,7 +4621,7 @@ GameObject:
   - component: {fileID: 768249798}
   - component: {fileID: 768249797}
   - component: {fileID: 768249796}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall z (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5358,7 +5358,7 @@ GameObject:
   - component: {fileID: 868584373}
   - component: {fileID: 868584372}
   - component: {fileID: 868584371}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall z (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9164,7 +9164,7 @@ GameObject:
   - component: {fileID: 1532683242}
   - component: {fileID: 1532683241}
   - component: {fileID: 1532683240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: kitchen wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10562,7 +10562,7 @@ GameObject:
   - component: {fileID: 1688435350}
   - component: {fileID: 1688435349}
   - component: {fileID: 1688435348}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Kitchen roof (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11277,7 +11277,7 @@ GameObject:
   - component: {fileID: 1733539562}
   - component: {fileID: 1733539561}
   - component: {fileID: 1733539560}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ceiling Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11794,7 +11794,7 @@ GameObject:
   - component: {fileID: 1794786561}
   - component: {fileID: 1794786560}
   - component: {fileID: 1794786559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall -x (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11984,7 +11984,7 @@ GameObject:
   - component: {fileID: 1866193583}
   - component: {fileID: 1866193582}
   - component: {fileID: 1866193581}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: wall -x
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13116,7 +13116,7 @@ GameObject:
   - component: {fileID: 2145074923}
   - component: {fileID: 2145074922}
   - component: {fileID: 2145074921}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
