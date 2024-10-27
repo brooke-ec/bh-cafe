@@ -1,9 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemSpawner : MonoBehaviour, IInteractable
 {
-    [SerializeField] private GameObject item;
+    [SerializeField] private GameObject[] items;
     [SerializeField] private float cooldown;
     [SerializeField] private string label;
 
@@ -17,7 +17,7 @@ public class ItemSpawner : MonoBehaviour, IInteractable
     void IInteractable.Interact(PlayerController player)
     {
         if (player.IsHolding()) return;
-        GameObject instance = Instantiate(item);
+        GameObject instance = Instantiate(Util.PickRandom(items));
         player.Pickup(instance);
         timer = cooldown;
     }

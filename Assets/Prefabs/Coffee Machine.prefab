@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346540b09fa8f1a4f9371b6fcb32e839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 3862682785661617041, guid: 78edab986adb72c4ab21d614a80b821d, type: 3}
+  items:
+  - {fileID: 3862682785661617041, guid: 78edab986adb72c4ab21d614a80b821d, type: 3}
   cooldown: 10
   label: Brewing
 --- !u!135 &573230089063712251
