@@ -14,6 +14,7 @@ public class CustomerController : MonoBehaviour, IInteractable
     [HideInInspector] public Transform exit;
 
     private PlayerController player;
+    private bool failed = false;
     private NavMeshAgent agent;
     private Animator animator;
     private float timeFallen;
@@ -77,10 +78,12 @@ public class CustomerController : MonoBehaviour, IInteractable
     {
         return !agent.pathPending && agent.remainingDistance < 0.5f;
     }
+
     private void Fail()
     {
-        if (waitTime < 0) return;
-        waitTime = -1;
+        if (failed) return;
+        God.instance.levelUIManager.LoseHeart();
+        failed = true;
     }
 
     private void Succeed()

@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         cc = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
         cameraOffset = Camera.main.transform.position - transform.position;
     }
 
@@ -119,7 +119,11 @@ public class PlayerController : MonoBehaviour
             ForceMode.Force
         );
 
-        if (hit.collider.CompareTag("Customer")) hit.gameObject.GetComponent<CustomerController>().Collide(this);
+        if (hit.collider.CompareTag("Customer"))
+        {
+            hit.gameObject.GetComponent<CustomerController>().Collide(this);
+            
+        }
     }
 
     public bool IsHolding()
@@ -166,15 +170,19 @@ public class PlayerController : MonoBehaviour
         Throw();
     }
 
-    public void speedUp()
+    public void SpeedUp()
     {
         moveSpeed += 12;
     }
-    public void speedDown()
+    public void SpeedDown()
     {
         moveSpeed -= 12;
     }
-
+    public void LockCamera(bool locked)
+    {
+        if (locked) Cursor.lockState = CursorLockMode.Locked; 
+        else Cursor.lockState = CursorLockMode.Confined;
+    }
     #region Updates
 
     private void UpdateInteractables()

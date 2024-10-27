@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelUIManager: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!1 &2413430503277402927
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,6 +190,26 @@ MonoBehaviour:
     volume: 0.1
     pitch: 0.8
     audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: bd039967eae7fc3438b449840997339b, type: 3}
+    soundName: 3
+    volume: 0.1
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c9a05aaf633f89a468e01e0382e88704, type: 3}
+    soundName: 4
+    volume: 0.1
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 477ce0b03ac85b645a010f5a7b21ce85, type: 3}
+    soundName: 6
+    volume: 0.4
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5dbdbc861486bd545afd31bd196bd2a1, type: 3}
+    soundName: 5
+    volume: 0.1
+    pitch: 0.5
+    audioSource: {fileID: 0}
   music:
   - clip: {fileID: 8300000, guid: e40045e1b5270194e848a6ed2e77c8bf, type: 3}
     musicName: 0
@@ -200,4 +221,4 @@ MonoBehaviour:
     volume: 0.1
     pitch: 1
     audioSource: {fileID: 0}
-  musicToPlay: 1
+  musicToPlay: 0

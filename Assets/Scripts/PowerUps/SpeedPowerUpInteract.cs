@@ -16,7 +16,7 @@ public class SpeedPowerUpInteract : MonoBehaviour
             if (playerController == null) return;
             else
             {
-                playerController.speedDown();
+                playerController.SpeedDown();
                 playerController = null;
             }
         }
@@ -28,10 +28,11 @@ public class SpeedPowerUpInteract : MonoBehaviour
         if (other.TryGetComponent<PlayerController>(out PlayerController controller)) 
         {
             playerController = controller;
-            playerController.speedUp();
+            playerController.SpeedUp();
             timeSinceSpeed = speedTime;
             GetComponent<SpriteRenderer>().enabled = false;
             GetComponent<BoxCollider>().enabled = false;
+            AudioManager.instance.PlaySound(AudioManager.SoundEnum.pickUp);
         }
     }
 }

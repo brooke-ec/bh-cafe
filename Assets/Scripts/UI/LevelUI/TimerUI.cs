@@ -8,6 +8,7 @@ public class TimerUI : MonoBehaviour
     // In seconds
     public float currentLevelTime;
     private Transform arrow;
+    private int totalLevelSeconds;
 
     void Awake()
     {
@@ -16,13 +17,13 @@ public class TimerUI : MonoBehaviour
 
     public void StartLevelCountdown(int lengthOfLevelMins)
     {
-        StartCoroutine(RotateClockStick(lengthOfLevelMins));
+        totalLevelSeconds = lengthOfLevelMins*60;
+        StartCoroutine(RotateClockStick());
     }
 
     //It goes from 45 degrees to -315
-    IEnumerator RotateClockStick(int lengthOfLevelMins)
+    IEnumerator RotateClockStick()
     {
-        int totalLevelSeconds = lengthOfLevelMins*60;
 
         print(-360f/totalLevelSeconds);
         float rotationToApply = -360f/totalLevelSeconds; //rotation between the max time in seconds
@@ -35,6 +36,18 @@ public class TimerUI : MonoBehaviour
         }
 
         God.instance.levelUIManager.EndLevel();
+    }
+
+    public void AddTime(float time)
+    {
+        if (currentLevelTime >= 0)
+        {
+
+
+            currentLevelTime -= time;
+            float rotationToApply = -360f / totalLevelSeconds;
+            arrow.Rotate(new Vector3(0, 0, -rotationToApply * time));
+        }
     }
 
 }
