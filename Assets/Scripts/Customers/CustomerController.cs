@@ -28,7 +28,7 @@ public class CustomerController : MonoBehaviour, IInteractable
         animator = GetComponent<Animator>();
 
         order = Util.PickRandom(options);
-        state = State.Arriving;
+        SetState(State.Arriving);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,12 +41,11 @@ public class CustomerController : MonoBehaviour, IInteractable
     // A finite state machine
     private void Update()
     {
-        animator.SetTrigger(state.ToString());
         switch (state)
         {
             case State.Arriving:
                 agent.destination = table.sitAnchor.position;
-                if (PathingComplete()) state = State.Sitting;
+                if (PathingComplete()) SetState(State.Sitting);
                 break;
             case State.Sitting:
                 Sitting();
@@ -58,7 +57,7 @@ public class CustomerController : MonoBehaviour, IInteractable
             case State.Fallen:
                 agent.ResetPath();
                 timeFallen -= Time.deltaTime;
-                if (timeFallen < 0) state = State.Leaving;
+                if (timeFallen < 0) SetState(State.Leaving);
                 break;
         }
     }
@@ -69,7 +68,7 @@ public class CustomerController : MonoBehaviour, IInteractable
         waitTime -= Time.deltaTime;
         if (waitTime < 0)
         {
-            state = State.Leaving;
+            SetState(State.Leaving);
             Fail();
         }
     }
@@ -88,12 +87,18 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     private void Succeed()
     {
-        state = State.Leaving;
+        SetState(State.Leaving);
         for (int i = 0; i < 5; i++) Instantiate(
             pickup,
             transform.position + Vector3.up * 1,
             Quaternion.identity
         );
+    }
+
+    private void SetState(State state)
+    {
+        animator.SetTrigger(state.ToString());
+        this.state = state;
     }
 
     public bool IsSitting()
@@ -111,7 +116,7 @@ public class CustomerController : MonoBehaviour, IInteractable
         if (IsSitting() || state == State.Fallen) return;
         player.Fall(transform.position);
         timeFallen = fallOverTime;
-        state = State.Fallen;
+        SetState(State.Fallen);
         Fail();
     }
 
