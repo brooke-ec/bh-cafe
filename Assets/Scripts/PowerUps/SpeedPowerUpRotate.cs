@@ -9,16 +9,11 @@ public class SpeedPowerUpRotate : MonoBehaviour
 
     private void Start()
     {
-        startPosition = transform.position;
+        startPosition = transform.localPosition;
     }
     void Update()
     {
-        // Just added another axis to this
-        transform.Rotate(
-            0f,
-            spinSpeed*Time.deltaTime, 
-            0f
-        );
-        transform.position = new Vector3(transform.position.x, startPosition.y+Mathf.Sin(Time.time)*0.5f, transform.position.z);
+        transform.Rotate(0f, spinSpeed * Time.deltaTime, 0f);
+        transform.localPosition = new Vector3(transform.localPosition.x, startPosition.y+Mathf.Sin(Time.time)*0.5f, transform.localPosition.z);
     }
 }
