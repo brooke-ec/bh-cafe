@@ -8,7 +8,7 @@ public class LevelSettings : ScriptableObject
     public int levelNum;
     public string levelDescription;
     public int numOfHearts;
-    public int lengthOfLevelMins;
+    public float lengthOfLevelMins;
     public int scoreNeededForLevel;
     public int scoreReductionForHealth;
     /// <summary>

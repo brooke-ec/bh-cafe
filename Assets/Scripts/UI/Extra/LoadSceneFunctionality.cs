@@ -28,7 +28,7 @@ public class LoadSceneFunctionality : MonoBehaviour
         }
         else
         {
-            LoadScene("Level" + God.instance.levelUIManager.lvlSettings.levelNum+1);
+            LoadScene("Level" + (God.instance.levelUIManager.lvlSettings.levelNum+1));
         }
 
     }

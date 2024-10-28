@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PlayerWorkshop.unity
     guid: fca4e0ba20dddd745ba684257be88766
   - enabled: 1
@@ -14,6 +14,27 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 8f4227c11bc6617459e93d319014b321
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: cb40460932a8cce49b582f344968a771
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 4578c362728aa514f8fa806d8aac544b
+  - enabled: 1
+    path: Assets/Scenes/Level4.unity
+    guid: 202e1e6cf72ca6d4c8f5ddd8d38f73ab
+  - enabled: 1
+    path: Assets/Scenes/Level5.unity
+    guid: eabfde3d18bb90b40a43294f491525a6
+  - enabled: 1
+    path: Assets/Scenes/Level6.unity
+    guid: 9b7fc6d1094856a479edb9dbb0d3bed5
+  - enabled: 1
+    path: Assets/Scenes/Level7.unity
+    guid: 0663472b91577964da1d16570c3b7b30
+  - enabled: 1
+    path: Assets/Scenes/Level8.unity
+    guid: 1b36558b6467e19459c3704f9875b197
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: f2fdb901bcde8b041b91db6f97b4d1e0

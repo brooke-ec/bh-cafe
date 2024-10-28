@@ -8,14 +8,14 @@ public class TimerUI : MonoBehaviour
     // In seconds
     public float currentLevelTime;
     private Transform arrow;
-    private int totalLevelSeconds;
+    private float totalLevelSeconds;
 
     void Awake()
     {
         arrow = transform.GetChild(0);
     }
 
-    public void StartLevelCountdown(int lengthOfLevelMins)
+    public void StartLevelCountdown(float lengthOfLevelMins)
     {
         totalLevelSeconds = lengthOfLevelMins*60;
         StartCoroutine(RotateClockStick());
