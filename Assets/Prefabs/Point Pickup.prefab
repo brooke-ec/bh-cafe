@@ -186,7 +186,7 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.07876587
         value: 0
         inSlope: 0
         outSlope: 0
@@ -195,8 +195,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.15079065
-        value: 0.15054077
+        time: 0.21243615
+        value: 0.16640991
         inSlope: -0.23679028
         outSlope: -0.23679028
         tangentMode: 0
@@ -204,8 +204,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 1
       - serializedVersion: 3
-        time: 0.5224148
-        value: 0
+        time: 0.6011807
+        value: 0.03175354
         inSlope: 0.5493194
         outSlope: 0.5493194
         tangentMode: 0
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max: {x: 2, y: 2}
   delay: 1
+  clip: {fileID: 8300000, guid: fbfc27b7d01785f4caa04331025ad3d4, type: 3}
 --- !u!65 &1013022309532713668
 BoxCollider:
   m_ObjectHideFlags: 0

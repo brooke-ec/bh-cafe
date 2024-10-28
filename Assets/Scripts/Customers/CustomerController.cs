@@ -13,7 +13,7 @@ public class CustomerController : MonoBehaviour, IInteractable
     [HideInInspector] public Transform exit;
 
     private PlayerController player;
-    private bool failed = false;
+    private bool canFail = true;
     private NavMeshAgent agent;
     private Animator animator;
     private float timeFallen;
@@ -91,17 +91,18 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     private void Fail()
     {
-        if (failed) return;
+        if (!canFail) return;
         God.instance.levelUIManager.LoseHeart();
-        failed = true;
+        canFail = false;
     }
 
     private void Succeed()
     {
+        canFail = false;
         SetState(State.Leaving);
         God.instance.levelUIManager.ModifyScore(order.points);
         God.instance.levelUIManager.RemoveOrder(table.tableNumber);
-        for (int i = 0; i < 5; i++) Instantiate(
+        for (int i = 0; i < Random.Range(1, 3); i++) Instantiate(
             pickup,
             transform.position + Vector3.up * 1,
             Quaternion.identity

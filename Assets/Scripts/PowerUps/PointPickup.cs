@@ -4,6 +4,8 @@ public class PointPickup : MonoBehaviour
 {
     [SerializeField] private Vector2 max;
     [SerializeField] private float delay;
+    [SerializeField] private AudioClip clip;
+
     void Start()
     {
         GetComponent<Rigidbody>().AddForce(new Vector3(
@@ -22,6 +24,7 @@ public class PointPickup : MonoBehaviour
     {
         if (delay > 0) return;
         if (!other.CompareTag("Player")) return;
+        AudioSource.PlayClipAtPoint(clip, transform.position);
         God.instance.levelUIManager.GainDiamond(1);
         Destroy(gameObject);
     }
