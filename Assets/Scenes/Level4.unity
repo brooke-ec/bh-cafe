@@ -6097,7 +6097,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 70da41a19a4f6ae4ab4d28d42d47adb1, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1 &896233186
 GameObject:
@@ -12408,7 +12408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558708785850488, guid: bcb5c50335d5ead4abea041e6e413ccd, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4.565
+      value: 4.565001
       objectReference: {fileID: 0}
     - target: {fileID: 4558708785850488, guid: bcb5c50335d5ead4abea041e6e413ccd, type: 3}
       propertyPath: m_LocalScale.y
@@ -12416,7 +12416,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4558708785850488, guid: bcb5c50335d5ead4abea041e6e413ccd, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.58325
+      value: 2.5832503
       objectReference: {fileID: 0}
     - target: {fileID: 4558708785850488, guid: bcb5c50335d5ead4abea041e6e413ccd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13955,9 +13955,9 @@ SceneRoots:
   - {fileID: 1702508858}
   - {fileID: 298020923}
   - {fileID: 1383562509}
-  - {fileID: 1837103357}
   - {fileID: 1911388295}
   - {fileID: 814994848}
   - {fileID: 1955260445}
   - {fileID: 783088449}
+  - {fileID: 1837103357}
   - {fileID: 193542787}
