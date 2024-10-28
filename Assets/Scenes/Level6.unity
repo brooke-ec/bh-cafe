@@ -1070,6 +1070,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6953263618126641009, guid: aea494cdc4c55d2489912a3ad2ea0e40, type: 3}
+      propertyPath: spawnDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7544773909356187099, guid: aea494cdc4c55d2489912a3ad2ea0e40, type: 3}
       propertyPath: m_Name
       value: CustomerSpawner

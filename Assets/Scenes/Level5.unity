@@ -1258,6 +1258,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6953263618126641009, guid: aea494cdc4c55d2489912a3ad2ea0e40, type: 3}
+      propertyPath: spawnDelay
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7544773909356187099, guid: aea494cdc4c55d2489912a3ad2ea0e40, type: 3}
       propertyPath: m_Name
       value: CustomerSpawner
@@ -2322,7 +2326,7 @@ PrefabInstance:
     - target: {fileID: 5669005476719490137, guid: 1df9eedc5b0dd5c42a5dadd0043f1b00, type: 3}
       propertyPath: lvlSettings
       value: 
-      objectReference: {fileID: 11400000, guid: 18160cc12e19b3b43a072719a2372422, type: 2}
+      objectReference: {fileID: 11400000, guid: a47c347674e03ee4095cd4b23492ca0d, type: 2}
     - target: {fileID: 7531907717336785845, guid: 1df9eedc5b0dd5c42a5dadd0043f1b00, type: 3}
       propertyPath: m_Name
       value: LevelUI

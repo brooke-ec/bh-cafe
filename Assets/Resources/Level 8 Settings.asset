@@ -17,5 +17,5 @@ MonoBehaviour:
   numOfHearts: 3
   lengthOfLevelMins: 2
   scoreNeededForLevel: 500
-  scoreReductionForHealth: 40
+  scoreReductionForHealth: 30
   extraDiamondPercentage: 30
