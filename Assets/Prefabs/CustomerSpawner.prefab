@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 8825225425417873447}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &6953263618126641009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f986e36644b3fb4db4cc72409db97ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
   spawnDelay: 5
   customers:
   - {fileID: 8615059549901197924, guid: 978c0d9495579d04fab4e005a36d3492, type: 3}
@@ -74,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 8052830333310501850}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.71, y: 0, z: 19.9}
+  m_LocalPosition: {x: 2.42, y: 0, z: -31.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
