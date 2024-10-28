@@ -89,7 +89,12 @@ public class AudioManager : MonoBehaviour
         levelComplete,
         error,
         levelFail,
-        bought
+        bought,
+        dashSound,
+        jump1,
+        jump2,
+        jump3,
+        jump4
     }
 
     #endregion

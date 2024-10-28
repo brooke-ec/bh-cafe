@@ -210,6 +210,31 @@ MonoBehaviour:
     volume: 0.1
     pitch: 0.5
     audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 2e765e46f268a19458dd56e37bd131ec, type: 3}
+    soundName: 7
+    volume: 0.1
+    pitch: 0.5
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c8b80e83155fa284f935068bd1b752c3, type: 3}
+    soundName: 8
+    volume: 0.5
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 1c462ccb25ce10742a7a5ff275cd5bb4, type: 3}
+    soundName: 9
+    volume: 0.5
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: dceb5e69b44b4294bb790929460a28ac, type: 3}
+    soundName: 10
+    volume: 0.5
+    pitch: 1
+    audioSource: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c8e5a48f82bd0574898cc76b93ac0c7b, type: 3}
+    soundName: 11
+    volume: 0.5
+    pitch: 1
+    audioSource: {fileID: 0}
   music:
   - clip: {fileID: 8300000, guid: e40045e1b5270194e848a6ed2e77c8bf, type: 3}
     musicName: 0

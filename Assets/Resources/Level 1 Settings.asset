@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 1 Settings
   m_EditorClassIdentifier: 
   levelNum: 1
-  levelDescription: Nice and easy, Nothing to hard
+  levelDescription: Nice and easy, Nothing too hard
   numOfHearts: 4
   lengthOfLevelMins: 2
   scoreNeededForLevel: 70
