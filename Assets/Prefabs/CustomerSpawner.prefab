@@ -49,6 +49,13 @@ MonoBehaviour:
   spawnDelay: 5
   customers:
   - {fileID: 8615059549901197924, guid: 978c0d9495579d04fab4e005a36d3492, type: 3}
+  - {fileID: 8615059549901197924, guid: f720cdd412c55f84299f37c8642a4bc7, type: 3}
+  - {fileID: 8615059549901197924, guid: ab8e01d931a4c784286cff2ce638de95, type: 3}
+  - {fileID: 8615059549901197924, guid: a90c4a7adaa3e82479df3820344ac901, type: 3}
+  - {fileID: 8615059549901197924, guid: bf5927c01ccc64541b8fcc98a216f2bc, type: 3}
+  - {fileID: 8615059549901197924, guid: 58cdeb4fe07c4534297ba3d0d4beef4c, type: 3}
+  - {fileID: 8615059549901197924, guid: 24c362ca0478c5b4c81ada94f31ed15d, type: 3}
+  - {fileID: 8615059549901197924, guid: 0a8bbed34d99f64448d00b3617c583f0, type: 3}
   exit: {fileID: 8825225425417873447}
 --- !u!1 &8052830333310501850
 GameObject:
