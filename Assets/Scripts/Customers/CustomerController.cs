@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -33,7 +32,13 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsSitting() || !other.TryGetComponent(out Item item) || other.attachedRigidbody == null) return;
+        if (
+            !IsSitting()
+            || other.attachedRigidbody == null
+            || !other.TryGetComponent(out Item item)
+            || item.GetType() != order
+        ) return;
+
         Destroy(other.gameObject);
         Succeed();
     }
