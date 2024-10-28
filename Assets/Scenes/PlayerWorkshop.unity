@@ -1036,18 +1036,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8541153529924133030, guid: 6712815de1e0f834eb394574c7a09648, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.2715
-      objectReference: {fileID: 0}
-    - target: {fileID: 8541153529924133030, guid: 6712815de1e0f834eb394574c7a09648, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.0395
-      objectReference: {fileID: 0}
-    - target: {fileID: 8541153529924133030, guid: 6712815de1e0f834eb394574c7a09648, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.0826
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

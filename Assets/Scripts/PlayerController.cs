@@ -57,10 +57,10 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactable;
 
     /// <summary> Wether input is disabled </summary>
-    private bool frozen = false;
+    private bool frozen;
 
     /// <summary> Wether the input is currently  </summary>
-    private bool active = false;
+    private bool active = true;
 
     /// <summary> The offset of the camera </summary>
     private Vector3 cameraMax;
@@ -90,6 +90,7 @@ public class PlayerController : MonoBehaviour
         UpdateCamera();
 
         if (dash > 0) dash -= Time.deltaTime;
+        references.trail.emitting = dash > dashSettings.dashCooldown - 0.5;
 
         animator.SetFloat("Fallen", fallen);
         animator.SetFloat("Vertical", vertical);
@@ -324,6 +325,7 @@ public class PlayerController : MonoBehaviour
     {
         public Transform itemAnchor;
         public Marker marker;
+        public TrailRenderer trail;
     }
 
     [Serializable]
