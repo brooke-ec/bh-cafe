@@ -52,6 +52,11 @@ public class LevelUIManager : MonoBehaviour
         ordersUI.AddNewOrder(totalSeconds, icon, tableNum);
     }
 
+    public void RemoveOrder(int tableNum)
+    {
+        ordersUI.RemoveOrder(tableNum);
+    }
+
     public void ModifyScore(int valueToModify)
     {
         scoreUI.ModifyScore(valueToModify);

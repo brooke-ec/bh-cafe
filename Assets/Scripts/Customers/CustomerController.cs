@@ -7,7 +7,7 @@ public class CustomerController : MonoBehaviour, IInteractable
     [SerializeField] private GameObject pickup;
     [SerializeField] private float waitTime;
     
-    [SerializeField] private Item.Type[] options;
+    [SerializeField] private OrderType[] options;
     
     [HideInInspector] public TableController table;
     [HideInInspector] public Transform exit;
@@ -17,7 +17,7 @@ public class CustomerController : MonoBehaviour, IInteractable
     private NavMeshAgent agent;
     private Animator animator;
     private float timeFallen;
-    private Item.Type order;
+    private OrderType order;
     private State state;
 
     private void Start()
@@ -50,7 +50,7 @@ public class CustomerController : MonoBehaviour, IInteractable
         {
             case State.Arriving:
                 agent.destination = table.sitAnchor.position;
-                if (PathingComplete()) SetState(State.Sitting);
+                if (PathingComplete()) Sit();
                 break;
             case State.Sitting:
                 Sitting();
@@ -65,6 +65,12 @@ public class CustomerController : MonoBehaviour, IInteractable
                 if (timeFallen < 0) SetState(State.Leaving);
                 break;
         }
+    }
+
+    private void Sit()
+    {
+        God.instance.levelUIManager.AddNewOrder(Mathf.CeilToInt(waitTime), order.sprite, table.tableNumber);
+        SetState(State.Sitting);
     }
 
     private void Sitting()
@@ -93,6 +99,8 @@ public class CustomerController : MonoBehaviour, IInteractable
     private void Succeed()
     {
         SetState(State.Leaving);
+        God.instance.levelUIManager.ModifyScore(order.points);
+        God.instance.levelUIManager.RemoveOrder(table.tableNumber);
         for (int i = 0; i < 5; i++) Instantiate(
             pickup,
             transform.position + Vector3.up * 1,
@@ -139,7 +147,7 @@ public class CustomerController : MonoBehaviour, IInteractable
 
     string IInteractable.GetText()
     {
-        return (HoldingCorrect() ? "Serve" : order) + $" ({Mathf.RoundToInt(waitTime)})";
+        return (HoldingCorrect() ? "Serve" : order.label) + $" ({Mathf.RoundToInt(waitTime)})";
     }
 
     bool IInteractable.IsVisible()

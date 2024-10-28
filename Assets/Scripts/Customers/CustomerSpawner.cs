@@ -25,10 +25,9 @@ public class CustomerSpawner : MonoBehaviour
             GameObject customer = Util.PickRandom(customers);
 
             CustomerController instance = Instantiate(customer, transform.position, transform.rotation).GetComponent<CustomerController>();
-            instance.exit = transform;
             table.customer = instance;
+            instance.exit = transform;
             instance.table = table;
-            
             timer = spawnDelay;
         }
         else

@@ -2,14 +2,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private Type type = Type.Other;
+    [SerializeField] private OrderType type = null;
 
-    public new Type GetType() { return type; }
-
-    public enum Type
-    {
-        Other,
-        Coffee,
-        Food,
-    }
+    public new OrderType GetType() { return type; }
 }

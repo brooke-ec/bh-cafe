@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class TableController : MonoBehaviour
 {
     public CustomerController customer;
-    public PlayerController player;
     public Transform sitAnchor;
+    public int tableNumber;
     public Transform chair;
 
     private Vector3 chairPos;
@@ -12,7 +13,7 @@ public class TableController : MonoBehaviour
     void Start()
     {
         chairPos = chair.position;
-        player = FindObjectOfType<PlayerController>();
+        foreach (var t in GetComponentsInChildren<TextMeshPro>()) t.text = tableNumber.ToString();
     }
 
     void Update()

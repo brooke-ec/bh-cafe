@@ -6,11 +6,11 @@ public class PointPickup : MonoBehaviour
     [SerializeField] private float delay;
     void Start()
     {
-        GetComponent<Rigidbody>().velocity = new Vector3(
-            Random.Range(-max.x, max.x), 
+        GetComponent<Rigidbody>().AddForce(new Vector3(
+            Random.Range(-max.x, max.x),
             5,
             Random.Range(-max.y, max.y)
-        );
+        ), ForceMode.Impulse);
     }
 
     private void Update()

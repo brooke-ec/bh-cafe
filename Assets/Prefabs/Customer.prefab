@@ -160,7 +160,11 @@ MonoBehaviour:
   fallOverTime: 2
   pickup: {fileID: 5322409069708740184, guid: 0fbccfa06ba66974ab32219694e6963f, type: 3}
   waitTime: 8
-  options: 0100000002000000
+  options:
+  - {fileID: 11400000, guid: 0f0f09a2fe08f414e9992fc9cb46d9f0, type: 2}
+  - {fileID: 11400000, guid: 793c0c4b26b945b47adf37f1e4f2fbf5, type: 2}
+  - {fileID: 11400000, guid: 793c0c4b26b945b47adf37f1e4f2fbf5, type: 2}
+  - {fileID: 11400000, guid: 793c0c4b26b945b47adf37f1e4f2fbf5, type: 2}
   table: {fileID: 0}
   exit: {fileID: 0}
 --- !u!195 &3049379840403561683

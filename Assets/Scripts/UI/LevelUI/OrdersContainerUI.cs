@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 public class OrdersContainerUI : MonoBehaviour
 {
     public OrderUI orderPrefab;
     // Start is called before the first frame update
 
-    private List<OrderUI> orders = new List<OrderUI>();
+    private Dictionary<int, OrderUI> orders = new();
     private IEnumerator ordersTimeReduction;
 
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
@@ -21,21 +22,28 @@ public class OrdersContainerUI : MonoBehaviour
         order.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "TABLE "+tableNum;
 
         order.maxSeconds = totalSeconds;
-        orders.Add(order);
+        orders.Add(tableNum, order);
+    }
+
+    public void RemoveOrder(int tableNum)
+    {
+        if (!orders.ContainsKey(tableNum)) return;
+        Destroy(orders[tableNum].gameObject);
+        orders.Remove(tableNum);
     }
 
     IEnumerator ReduceOrdersTimers()
     {
         while(true)
         {
-            for(int i=0; i< orders.Count; i++)
+            foreach (int key in orders.Keys.ToArray())
             {
-                OrderUI order = orders[i];
-                order.transform.GetChild(0).GetComponent<Slider>().value -= 1f/order.maxSeconds;
+                OrderUI order = orders[key];
+                order.transform.GetChild(0).GetComponent<Slider>().value -= 1f/ order.maxSeconds;
 
                 if(order.transform.GetChild(0).GetComponent<Slider>().value <= 0)
                 {
-                    orders.Remove(order);
+                    orders.Remove(key);
                     Destroy(order.gameObject);
                 }
             }

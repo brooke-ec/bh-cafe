@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1216089564970135517}
   - component: {fileID: 4311848691546129775}
   - component: {fileID: 8015439824072888413}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 1013022309532713668}
   - component: {fileID: 4206375967831686052}
   - component: {fileID: 8321734128105679312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43b88a37f7a7f94ba35237e0549583e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max: {x: 5, y: 2}
+  max: {x: 2, y: 2}
   delay: 1
 --- !u!65 &1013022309532713668
 BoxCollider:
