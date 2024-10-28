@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f986e36644b3fb4db4cc72409db97ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 10
+  spawnDelay: 5
   customers:
   - {fileID: 8615059549901197924, guid: 978c0d9495579d04fab4e005a36d3492, type: 3}
