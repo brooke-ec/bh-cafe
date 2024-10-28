@@ -16,6 +16,6 @@ MonoBehaviour:
   levelDescription: Watch out for the Coffee Spills
   numOfHearts: 4
   lengthOfLevelMins: 1
-  scoreNeededForLevel: 200
+  scoreNeededForLevel: 120
   scoreReductionForHealth: 10
   extraDiamondPercentage: 20
