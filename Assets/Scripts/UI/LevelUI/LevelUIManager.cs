@@ -22,6 +22,7 @@ public class LevelUIManager : MonoBehaviour
     private GameObject startOfLevel;
 
     [HideInInspector] public int diamondsEarnedSoFar = 0;
+    public bool hasDoneEndScreen = false;
 
     void Awake()
     {
@@ -41,12 +42,16 @@ public class LevelUIManager : MonoBehaviour
 
     public void EndLevel()
     {
-        ordersUI.EndLevel();
-        print("End of level");
-        Instantiate(endOfLevelUIprefab, transform);
-        StopAllCoroutines();
-        CustomerSpawner.SetActive(false);
-        if (God.instance.playerController != null) God.instance.playerController.SetActive(false);
+        if (!hasDoneEndScreen)
+        {
+            hasDoneEndScreen = true;
+            ordersUI.EndLevel();
+            print("End of level");
+            Instantiate(endOfLevelUIprefab, transform);
+            StopAllCoroutines();
+            CustomerSpawner.SetActive(false);
+            if (God.instance.playerController != null) God.instance.playerController.SetActive(false);
+        }
     }
 
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
