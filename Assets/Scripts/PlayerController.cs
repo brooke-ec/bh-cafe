@@ -57,7 +57,10 @@ public class PlayerController : MonoBehaviour
     private IInteractable interactable;
 
     /// <summary> Wether input is disabled </summary>
-    private bool disabled = false;
+    private bool frozen = false;
+
+    /// <summary> Wether the input is currently  </summary>
+    private bool active = false;
 
     /// <summary> The offset of the camera </summary>
     private Vector3 cameraMax;
@@ -76,7 +79,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         delta = Vector3.zero;
-        disabled = false;
+        frozen = !active;
 
         ApplyFallen();
         ApplyRotation();
@@ -178,10 +181,10 @@ public class PlayerController : MonoBehaviour
     {
         moveSpeed -= 12;
     }
-    public void LockCamera(bool locked)
+    public void SetActive(bool active)
     {
-        if (locked) Cursor.lockState = CursorLockMode.Locked; 
-        else Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = active ? CursorLockMode.Locked : CursorLockMode.Confined;
+        this.active = active;
     }
     public void JumpSound()
     {
@@ -204,12 +207,12 @@ public class PlayerController : MonoBehaviour
     {
         if (fallen <= 0) return;
         fallen -= Time.deltaTime;
-        disabled = true;
+        frozen = true;
     }
 
     private void ApplyJump()
     {
-        if (disabled) jump = -1;
+        if (frozen) jump = -1;
         if (coyote < 0) jump -= Time.deltaTime;
         else if (jump >= 0)
         {
@@ -222,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyRotation()
     {
-        if (disabled) return;
+        if (frozen) return;
 
         float y = Camera.main.transform.eulerAngles.y;
         delta = Quaternion.Euler(0, y, 0) * new Vector3(movement.x, 0, movement.y);
@@ -293,7 +296,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash()
     {
-        if (dash > 0 || disabled || movement == Vector2.zero) return;
+        if (frozen || dash > 0 || movement == Vector2.zero) return;
         velocity = delta * dashSettings.dashPower;
         dash = dashSettings.dashCooldown;
         AudioManager.instance.PlaySound(AudioManager.SoundEnum.dashSound,100);
@@ -301,13 +304,13 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract()
     {
-        if (interactable == null || !interactable.IsActive()) return;
+        if (frozen || interactable == null || !interactable.IsActive()) return;
         interactable.Interact(this);
     }
 
     public void OnThrow()
     {
-        if (disabled || heldItem == null) return;
+        if (frozen || heldItem == null) return;
         animator.SetTrigger("Throw");
         Util.RunAfter(0.15f, Throw);
     }

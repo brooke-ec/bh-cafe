@@ -3,12 +3,21 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public bool active = false;
     [SerializeField] private float spawnDelay = 10;
     [SerializeField] private GameObject[] customers;
     [SerializeField] private Transform exit;
 
     private float timer = 0;
     private TableController[] tables;
+
+    public static void SetActive(bool state)
+    {
+        foreach (CustomerSpawner spawner in FindObjectsOfType<CustomerSpawner>())
+        {
+            spawner.active = state;
+        }
+    }
 
     void Start()
     {
@@ -17,6 +26,7 @@ public class CustomerSpawner : MonoBehaviour
 
     void Update()
     {
+        if (!active) return;
         if (timer < 0)
         {
             TableController[] options = tables.Where(t => t.IsEmpty()).ToArray();
