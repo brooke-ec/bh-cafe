@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNum: 3
   levelDescription: New Floor! Dont forget to go upstairs!
   numOfHearts: 4
-  lengthOfLevelMins: 3
-  scoreNeededForLevel: 210
+  lengthOfLevelMins: 1.75
+  scoreNeededForLevel: 100
   scoreReductionForHealth: 20
   extraDiamondPercentage: 20

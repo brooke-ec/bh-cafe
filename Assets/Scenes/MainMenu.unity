@@ -1409,7 +1409,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -34.9722}
-  m_SizeDelta: {x: 862, y: 482.7344}
+  m_SizeDelta: {x: 884.0508, y: 482.7344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037758705
 MonoBehaviour:
@@ -1437,7 +1437,8 @@ MonoBehaviour:
     your in a rush just press q and you can throw them at your lovely customers,\nonce
     you've served them pick up the money they leave behind to score your points.\nscore
     as many points in the time as you can!\n\nwatch out, dont hit the customers!\nand
-    look out for spills!\n\nW,A,S,D to move\nE to pick up and serve\nq to throw\n"
+    look out for spills!\n\nW,A,S,D to move\nE to pick up and serve\nq to throw\nShift
+    to Dash\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
   m_sharedMaterial: {fileID: -6981615831871449039, guid: bc7fb20bc014ef840bc031748dde206a, type: 2}
@@ -1500,7 +1501,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -41.363464}
+  m_margin: {x: 0, y: 0, z: 0, w: -37.68866}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1758,6 +1759,74 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6709034949073356511, guid: 11c087fdbd7b3bb42a14099561e748ba, type: 3}
   m_PrefabInstance: {fileID: 1249905593}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1251961704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1251961706}
+  - component: {fileID: 1251961705}
+  m_Layer: 0
+  m_Name: Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!328 &1251961705
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251961704}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 31f585c771c4ff7499d986724c74fe3b, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 1952368543}
+  m_TargetTexture: {fileID: 8400000, guid: 22750da1b9bbbe44c9d10487290c3893, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 0
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 0
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 0
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!4 &1251961706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251961704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1256633244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3296,8 +3365,8 @@ Camera:
   m_GameObject: {fileID: 1952368541}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.16470589, g: 0.64705884, b: 0.78823537, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -3632,6 +3701,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1952368544}
   - {fileID: 1696767664}
+  - {fileID: 1251961706}
   - {fileID: 1399341235}
   - {fileID: 1776541020}
   - {fileID: 620651715747907127}

@@ -5,6 +5,7 @@ public class CustomerSpawner : MonoBehaviour
 {
     [SerializeField] private float spawnDelay = 10;
     [SerializeField] private GameObject[] customers;
+    [SerializeField] private Transform exit;
 
     private float timer = 0;
     private TableController[] tables;
@@ -26,7 +27,7 @@ public class CustomerSpawner : MonoBehaviour
 
             CustomerController instance = Instantiate(customer, transform.position, transform.rotation).GetComponent<CustomerController>();
             table.customer = instance;
-            instance.exit = transform;
+            instance.exit = exit;
             instance.table = table;
             timer = spawnDelay;
         }

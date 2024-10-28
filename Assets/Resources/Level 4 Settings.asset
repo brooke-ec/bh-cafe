@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNum: 4
   levelDescription: Power Ups baby!
   numOfHearts: 4
-  lengthOfLevelMins: 3
-  scoreNeededForLevel: 280
+  lengthOfLevelMins: 1.75
+  scoreNeededForLevel: 150
   scoreReductionForHealth: 20
   extraDiamondPercentage: 20
