@@ -183,6 +183,11 @@ public class PlayerController : MonoBehaviour
         if (locked) Cursor.lockState = CursorLockMode.Locked; 
         else Cursor.lockState = CursorLockMode.Confined;
     }
+    public void JumpSound()
+    {
+        AudioManager.SoundEnum[] jumps = { AudioManager.SoundEnum.jump1, AudioManager.SoundEnum.jump2, AudioManager.SoundEnum.jump3, AudioManager.SoundEnum.jump4 };
+        AudioManager.instance.PlaySound(jumps[UnityEngine.Random.Range(0, jumps.Length)],100);
+    }
     #region Updates
 
     private void UpdateInteractables()
@@ -283,6 +288,7 @@ public class PlayerController : MonoBehaviour
     public void OnJump()
     {
         jump = coyoteTime;
+        JumpSound();
     }
 
     public void OnDash()
@@ -290,6 +296,7 @@ public class PlayerController : MonoBehaviour
         if (dash > 0 || disabled || movement == Vector2.zero) return;
         velocity = delta * dashSettings.dashPower;
         dash = dashSettings.dashCooldown;
+        AudioManager.instance.PlaySound(AudioManager.SoundEnum.dashSound,100);
     }
 
     public void OnInteract()

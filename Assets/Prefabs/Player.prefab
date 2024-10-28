@@ -913,7 +913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 4336377492399332247}
   clip: {fileID: 8300000, guid: 99dd598aa513c7b47886447df01bcc30, type: 3}
-  volume: 0.5
+  volume: 0.2
 --- !u!4 &7659396057927924672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8891244130364874969, guid: b2c24fcbd0cf6b04eb17b5ae21684483, type: 3}

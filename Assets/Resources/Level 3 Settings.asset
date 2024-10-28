@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level 3 Settings
   m_EditorClassIdentifier: 
   levelNum: 3
-  levelDescription: New Floor! Dont forget to go up stairs!
+  levelDescription: New Floor! Dont forget to go upstairs!
   numOfHearts: 4
   lengthOfLevelMins: 3
   scoreNeededForLevel: 210
