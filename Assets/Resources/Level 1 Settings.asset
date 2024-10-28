@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 1
   levelDescription: Nice and easy, Nothing too hard
-  numOfHearts: 4
+  numOfHearts: 5
   lengthOfLevelMins: 1
   scoreNeededForLevel: 70
   scoreReductionForHealth: 5
