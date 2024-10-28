@@ -58,15 +58,21 @@ public static class Util
     /// <param name="canvas">The canvas to get a position on</param>
     /// <param name="position">The world position</param>
     /// <returns>The canvas position</returns>
-    public static Vector2 WorldToCanvasPosition(RectTransform canvas, Vector3 position)
+    public static Vector2 WorldToCanvasPosition(Canvas canvas, Vector3 position)
     {
-        Vector3 result = Camera.main.WorldToScreenPoint(position);
+        //Vector position (percentage from 0 to 1) considering camera size.
+        //For example (0,0) is lower left, middle is (0.5,0.5)
+        Vector2 viewportPoint = Camera.main.WorldToViewportPoint(position);
 
-        if (result.z < 0) return Vector2.negativeInfinity;
+        var rootCanvasTransform = (canvas.isRootCanvas ? canvas.transform : canvas.rootCanvas.transform) as RectTransform;
+        var rootCanvasSize = rootCanvasTransform!.rect.size;
+        //Calculate position considering our percentage, using our canvas size
+        //So if canvas size is (1100,500), and percentage is (0.5,0.5), current value will be (550,250)
+        var rootCoord = (viewportPoint - rootCanvasTransform.pivot) * rootCanvasSize;
+        if (canvas.isRootCanvas)
+            return rootCoord;
 
-        result.x -= canvas.sizeDelta.x * canvas.pivot.x;
-        result.y -= canvas.sizeDelta.y * canvas.pivot.y;
-
-        return result;
+        var rootToWorldPos = rootCanvasTransform.TransformPoint(rootCoord);
+        return canvas.transform.InverseTransformPoint(rootToWorldPos);
     }
 }

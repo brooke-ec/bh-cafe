@@ -9,19 +9,19 @@ public class Marker : MonoBehaviour
     public IInteractable interactable;
     public IInteractable anchor;
 
-    private RectTransform canvas;
+    private Canvas canvas;
     private RectTransform rect;
     private CanvasGroup group;
     private Image image;
 
     void Start()
     {
-        canvas = FindObjectOfType<Canvas>().transform as RectTransform;
+        canvas = FindObjectOfType<Canvas>();
         group = GetComponent<CanvasGroup>();
         rect = transform as RectTransform;
         image = GetComponent<Image>();
 
-        rect.SetParent(canvas);
+        rect.SetParent(canvas.transform);
     }
 
     void Update()
