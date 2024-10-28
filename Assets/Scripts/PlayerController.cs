@@ -197,6 +197,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateInteractables()
     {
         interactable = null;
+        if (frozen) return;
         interactable = interactables
             .Where(x => x.IsVisible())
             .OrderBy(x => (transform.position - x.transform.position).sqrMagnitude)
