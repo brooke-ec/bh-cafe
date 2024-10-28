@@ -49,6 +49,7 @@ public class EndOfLevelUI : MonoBehaviour
         if(currentScore > previousHigh)
         {
             contentTransform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Best: " + currentScore.ToString();
+            SavingSystem.instance.saveData.highscoreLevel[highscoreIndex] = currentScore;
         }
         else
         {
