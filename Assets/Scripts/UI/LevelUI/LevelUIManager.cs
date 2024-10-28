@@ -35,7 +35,8 @@ public class LevelUIManager : MonoBehaviour
         heartsUI.SetInitialHearts(lvlSettings.numOfHearts);
         timerUI.StartLevelCountdown(lvlSettings.lengthOfLevelMins);
         ordersUI.StartLevel();
-        if(God.instance.playerController != null) God.instance.playerController.LockCamera(true);
+        CustomerSpawner.SetActive(true);
+        if (God.instance.playerController != null) God.instance.playerController.SetActive(true);
     }
 
     public void EndLevel()
@@ -44,7 +45,8 @@ public class LevelUIManager : MonoBehaviour
         print("End of level");
         Instantiate(endOfLevelUIprefab, transform);
         StopAllCoroutines();
-        if (God.instance.playerController != null) God.instance.playerController.LockCamera(false);
+        CustomerSpawner.SetActive(false);
+        if (God.instance.playerController != null) God.instance.playerController.SetActive(false);
     }
 
     public void AddNewOrder(int totalSeconds, Sprite icon, int tableNum)
@@ -127,7 +129,7 @@ public class LevelUIManager : MonoBehaviour
 
         transform.gameObject.SetActive(false);
         //StartLevel();
-        if (God.instance.playerController != null) God.instance.playerController.LockCamera(false);
+        if (God.instance.playerController != null) God.instance.playerController.SetActive(false);
     }
     IEnumerator WaitSeconds()
     {
