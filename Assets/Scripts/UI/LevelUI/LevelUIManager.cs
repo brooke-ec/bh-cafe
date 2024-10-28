@@ -126,6 +126,7 @@ public class LevelUIManager : MonoBehaviour
         startOfLevel.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "LEVEL " + lvlSettings.levelNum;
         startOfLevel.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = lvlSettings.levelDescription;
         startOfLevel.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>StartLevel());
+        startOfLevel.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "TARGET: "+lvlSettings.scoreNeededForLevel.ToString();
 
         transform.gameObject.SetActive(false);
         //StartLevel();
