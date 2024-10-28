@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNum: 8
   levelDescription: The Final One!!
   numOfHearts: 3
-  lengthOfLevelMins: 2
-  scoreNeededForLevel: 500
-  scoreReductionForHealth: 30
+  lengthOfLevelMins: 3
+  scoreNeededForLevel: 200
+  scoreReductionForHealth: 10
   extraDiamondPercentage: 30

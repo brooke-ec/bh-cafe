@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNum: 6
   levelDescription: More Customers
   numOfHearts: 5
-  lengthOfLevelMins: 1.5
+  lengthOfLevelMins: 2
   scoreNeededForLevel: 100
-  scoreReductionForHealth: 10
+  scoreReductionForHealth: 5
   extraDiamondPercentage: 20

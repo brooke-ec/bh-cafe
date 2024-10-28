@@ -21,7 +21,7 @@ public class LevelUIManager : MonoBehaviour
     public GameObject startOfLevelUIPrefab;
     private GameObject startOfLevel;
 
-    
+    [HideInInspector] public int diamondsEarnedSoFar = 0;
 
     void Awake()
     {
@@ -71,7 +71,7 @@ public class LevelUIManager : MonoBehaviour
 
     public void GainDiamond(int amount)
     {
-        SavingSystem.instance.saveData.diamonds += amount;
+        diamondsEarnedSoFar += amount;
     }
 
     public void LoseHeart()

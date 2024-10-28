@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 4
   levelDescription: Power Ups baby!
-  numOfHearts: 4
+  numOfHearts: 5
   lengthOfLevelMins: 1.75
   scoreNeededForLevel: 150
   scoreReductionForHealth: 5

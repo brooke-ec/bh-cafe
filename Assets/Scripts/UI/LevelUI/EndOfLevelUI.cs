@@ -56,8 +56,9 @@ public class EndOfLevelUI : MonoBehaviour
         }
 
         //MISSING SHOP POINTS
-        int diamonds = SavingSystem.instance.saveData.diamonds += CalculateNewDiamonds(currentScore - lvlSettings.scoreNeededForLevel);
-        contentTransform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diamonds.ToString();
+        int diamondsEarnedSoFar = CalculateNewDiamonds(currentScore - lvlSettings.scoreNeededForLevel) + God.instance.levelUIManager.diamondsEarnedSoFar;
+        int diamonds = SavingSystem.instance.saveData.diamonds += diamondsEarnedSoFar;
+        contentTransform.GetChild(3).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = diamondsEarnedSoFar.ToString();
     }
 
     private void SetUpTitle()

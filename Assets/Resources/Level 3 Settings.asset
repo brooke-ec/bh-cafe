@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelNum: 3
   levelDescription: New Floor! Dont forget to go upstairs!
-  numOfHearts: 4
+  numOfHearts: 5
   lengthOfLevelMins: 1.75
   scoreNeededForLevel: 100
   scoreReductionForHealth: 5
