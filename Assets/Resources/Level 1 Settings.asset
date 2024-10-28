@@ -15,7 +15,7 @@ MonoBehaviour:
   levelNum: 1
   levelDescription: Nice and easy, Nothing too hard
   numOfHearts: 4
-  lengthOfLevelMins: 1
-  scoreNeededForLevel: 70
+  lengthOfLevelMins: 0.5
+  scoreNeededForLevel: 120
   scoreReductionForHealth: 10
   extraDiamondPercentage: 20
